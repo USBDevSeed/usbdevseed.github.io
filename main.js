@@ -1,9 +1,9 @@
 let intro = document.querySelector('.intro');
 let intro_div_logo = document.querySelector('.introDivLogo');
 let logos = document.querySelectorAll('.introLogo');
-let intro_div_label = document.querySelector('.introDivLabel');
-let intro_dev_text = document.querySelector('.h1dev')
-let intro_seed_text = document.querySelector('.h1seed')
+let intro_div_label = document.querySelector('.introLabelDiv');
+let intro_dev_text = document.querySelector('.introDevLabel');
+let intro_seed_text = document.querySelector('.introSeedLabel');
 
 var type_speed = 50;
 var dev_text_count = 0;
@@ -58,6 +58,10 @@ function typeWriter() {
 
 function onJuegosCategoryClicked() {
     window.open("https://wholstenholm.itch.io/", '_blank').focus();
+}
+
+function onTutorialesCategoryClicked(){
+    window.location.href = 'Tutorials/PrimerPlataformero/index.html'
 }
 
 function onArticulosCategoryClicked() {
