@@ -61,10 +61,9 @@ function onJuegosCategoryClicked() {
 }
 
 function onTutorialesCategoryClicked(){
-    window.location.href = 'Tutorials/PrimerPlataformero/index.html'
+    window.location.href = 'TutorialBrowser/index.html'
 }
 
 function onArticulosCategoryClicked() {
     window.open("https://usbcali.edu.co/exito-bonaventuriano-en-el-cali-game-jam-2025/", '_blank').focus();
 }
-

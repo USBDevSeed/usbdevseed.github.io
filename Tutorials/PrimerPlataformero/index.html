@@ -7,58 +7,71 @@
     <link href="../../style.css" rel="stylesheet"> 
     <link href="../../prismJS/prism.css" rel="stylesheet"> 
 <body class = "tutorialBody">
+    <img class="burgerIcon" src="../../Assets/Icons/burger.png" onclick="onNavbarBurgerIconClicked()">  
+
     <div class="tutorialSidebar">
+        <p onclick="onReturnClicked()"> < Volver </p>
         <nav class="tutorialSidebarNav"> 
-            <a href="#heading1"> Creando nuestro proyecto </a>
+            <!-- <a href="#heading1"> Nuestro primer personaje </a>
             <a href="#heading2"> Nuestro personaje </a>
-            <a href="#heading3"> El mundo de juego </a>
+            <a href="#heading3"> El mundo de juego </a> -->
         </nav>
     </div>
 
     <div class="tutorialDiv"> 
-        <h1 id="heading1"> Creando nuestro proyecto en Godot </h1>
-            <p> 
-                En este tutorial, veremos lo basico de...  
-            </p>
-            <pre> 
-                <code class="language-gdscript"> 
-                    print("hola Mundo!!")
-                </code>
-            </pre>
-        <h1 id="heading2"> Nuestro personaje </h1>
-            <p> 
-                Godot funciona a partir de un arbol de escenas y nodos. Una escena esta constituida por multiples nodos, y un nodo individual puede ser muchas cosas, como un bloque de texto, una textura o una pista de audio. Podemos ver las escenas como una construccion, y los nodos como los ladrillos de esta. Para añadir nodos a nuestra escena, tendremos que buscar en el apartado superior izquierdo del editor.
-            </p>
-            <img src="img00.png">
-            <p> 
-                Nuestro personaje sera un nodo de tipo <code> CharacterBody2D </code>, para añadirlo a la escena, tendremos que seleccionar cualquiera de los dos botones subrayados (+, "Other Node"), y luego buscaremos <code> CharacterBody2D </code>
-            </p>
-            <div style="display: flex; flex-direction: row;"> 
-                <img src="img01.png"> 
-                <img src="img02.png">
-            </div>
+        <h1> Nuestro primer plataformero </h1>
+        <img class="mainGif" src="main.gif"> 
+        <p> 
+            En este tutorial paso a paso, crearemos las bases de un plataformero basico usando Godot engine. Al finalizar, tendremos un prototipo con las siguientes caracteristicas:
+            <ul> 
+                <li> Personaje 2D con movimiento basico </li>
+                <li> Nivel editable con tilemaps </li>
+                <li> Controles de movimiento para pantallas tactiles</li>
+            </ul>
+        </p>
+        <h1> Creando un proyecto en Godot </h1>
+        <p> 
+            En este tutorial, veremos lo basico de...  
+        </p>
+        <pre> 
+            <code class="language-gdscript"> 
+                print("hola Mundo!!")
+            </code>
+        </pre>
+        <h1> Nuestro personaje </h1>
+        <p> 
+             Godot funciona a partir de un arbol de escenas y nodos. Una escena esta constituida por multiples nodos, y un nodo individual puede ser muchas cosas, como un bloque de texto, una textura o una pista de audio. Podemos ver las escenas como una construccion, y los nodos como los ladrillos de esta. Para añadir nodos a nuestra escena, tendremos que buscar en el apartado superior izquierdo del editor.
+        </p>
+        <img src="img00.png">
+        <p> 
+             Nuestro personaje sera un nodo de tipo <code> CharacterBody2D </code>, para añadirlo a la escena, tendremos que seleccionar cualquiera de los dos botones subrayados (+, "Other Node"), y luego buscaremos <code> CharacterBody2D </code>
+        </p>
+        <div style="display: flex; flex-direction: row;"> 
+            <img src="img01.png"> 
+            <img src="img02.png">
+        </div>
 
-            <pre> 
-                <code class="language-gdscript">
-                    extends CharacterBody2D
+        <pre> 
+            <code class="language-gdscript">
+                extends CharacterBody2D
 
-                    var rapidez = 100;
+                var rapidez = 100;
 
-                    func _physics_process(delta: float) -> void:
-                        #Recibir input de jugador
-                        velocity.x = 0
-                        if Input.is_action_pressed("izquierda"):
-                            velocity.x += rapidez
-                        if Input.is_action_pressed("derecha"):
-                            velocity.x -= rapidez
-                        
-                        move_and_slide()
-                </code>
-            </pre>
-
-        <h1 id="heading3"> El mundo de juego </h1>
+                func _physics_process(delta: float) -> void:
+                    #Recibir input de jugador
+                    velocity.x = 0
+                    if Input.is_action_pressed("izquierda"):
+                        velocity.x += rapidez
+                    if Input.is_action_pressed("derecha"):
+                        velocity.x -= rapidez
+                    
+                    move_and_slide()
+            </code>
+        </pre>
+        <h1> El mundo de juego </h1>
     </div>
 
+    <script src="../tutorial.js"> </script>
     <script src="../../prismJS/prism.js"></script>
 </body>
 </html>

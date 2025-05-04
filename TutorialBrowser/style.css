@@ -1,0 +1,9 @@
+.tutorialBrowserDiv{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color:#1c1438;
+    justify-content: space-around;
+}
