@@ -1,10 +1,11 @@
 html{
     scroll-behavior: smooth;
+    overflow: hidden;
 }
 
 body{
-    overflow-x: hidden;
     background-color:#1c1438;
+    overflow: hidden;
 }
 
 h1{
@@ -228,11 +229,12 @@ li{
     background-color: #0f0f0f93;
     left: 20vw;
     width: 75vw;
-    min-height: 100vh;
+    height: 100vh;
     padding-left: 20px;
     padding-right: 20%;
     box-shadow: 0px 0px 50px #0f0f0f93;
     transition: 0.5s ease-out;
+    overflow-y: auto;
 }
 
 .tutorialDiv.center{
@@ -291,15 +293,25 @@ li{
     height: 10vh;
 }
 
+.topbar{
+    display: flex;
+    background-color: black;
+    position: relative;
+    top: 0;
+    width: 100%;
+
+}
+
 .tutorialBody{
     background-color: #1c1438;
+    margin-top: 0px;
 }
 
 .burgerIcon{
-    position: fixed;
+    /*position: fixed;*/
     z-index: 2;
-    left: 14vw;
-    width: 5vw;
+    /*left: 14vw;*/
+    /*width: 5vw;*/
     cursor: pointer;
     rotate: 360deg;
 
@@ -307,16 +319,13 @@ li{
 }
 
 .burgerIcon.closed{
-    left: 2vw;
+    /*left: 2vw;*/
     rotate: 0deg;
     transition: 0.5s ease-out;
 }
 
 .imgVisibilityIcon{
-    position: fixed;
     z-index: 2;
-    right: 2vh;
-    bottom: 5vh;
     height: 10%;
     cursor: pointer;
 }
@@ -324,12 +333,13 @@ li{
 .tutorialSidebar{
     position: fixed;
     height: 100vh;
-    width: 20vw;
+    width: 270px;
     top: 0;
     left: 0vw;
     z-index: 1;
     padding-top: 6vw;
     background-color: #0f0f0f;
+    overflow-y: auto;
 
     display: flex;
     flex-direction: column;
