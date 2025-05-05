@@ -11,13 +11,20 @@ h1{
     font-family: "Lilita one", sans-serif;
     color: antiquewhite;
 }
+h2{
+    font-family: "Lilita one", sans-serif;
+    color: antiquewhite;
+}
 
 p{
     font-family: "Roboto", sans-serif;
     color: antiquewhite ;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
     font-size: 110%;
     text-indent: 5%;
-    line-height: 1.3;
+    line-height: 1.6;
 }
 
 li{
@@ -150,6 +157,72 @@ li{
     text-align: center;
 }
 
+.accordion{
+    display: flex;
+    flex-direction: column;
+}
+
+.accordionHeading{
+    position: relative;
+    left: 1vw;
+    cursor: pointer;
+    width: 70%;
+    height: 50px;
+    transition: 0.5s ease-out;
+}
+
+.tutorialDiv .accordion .accordionHeading:hover{
+    width: 100%;
+    transition: 0.5s ease-out;
+}
+
+.accordionArrow{
+    rotate: 0deg;
+    transition: 0.5 ease-out;
+}
+
+.accordionArrowActive{
+    rotate: -90deg;
+    transition: 0.5 ease-out;
+}
+
+.accordionContainer{
+    display: none;
+    height: 0%;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.5s ease-out, height 0.5s ease-out, display 0.5s ease;
+    transition-behavior: allow-discrete;
+    /*transition-behavior: allow-discrete;*/
+}
+
+.accordionContainer.display{
+    /*max-height: 100%;*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    opacity: 1;
+    pointer-events: all;
+
+    transition: opacity 0.5s ease-out, height 0.5s ease-out, 
+    display 0.5s ease;
+    transition-behavior: allow-discrete;
+    /*transition-behavior: allow-discrete;*/
+}
+
+@starting-style{
+    .accordionContainer.display{
+        height: 0px;
+        opacity: 0;
+    }
+    .accordionContainer{
+        height: 100%;
+        opacity: 1;
+    }
+}
+
 .tutorialDiv{
     position: relative;
     background-color: #0f0f0f93;
@@ -159,8 +232,18 @@ li{
     padding-left: 20px;
     padding-right: 20%;
     box-shadow: 0px 0px 50px #0f0f0f93;
+    transition: 0.5s ease-out;
+}
+
+.tutorialDiv.center{
+    left: 0vw;
+    width: 90vw;
 
     transition: 0.5s ease-out;
+}
+
+.tutorialDiv p{
+    padding-right: 10%;
 }
 
 .tutorialDiv h1{
@@ -170,6 +253,18 @@ li{
     align-content: center;
     padding: 10px;
     left: -20px;
+}
+
+.tutorialDiv h2{
+    position: relative;
+    background-image: linear-gradient(to right, black, rgba(0, 0, 0, 0));
+    width: 50%;
+    min-height: 5vh;
+    align-content: center;
+    padding: 10px;
+    left: -20px;
+
+    transition: 0.5s ease-out;
 }
 
 .categoryLabel{
@@ -217,9 +312,18 @@ li{
     transition: 0.5s ease-out;
 }
 
+.imgVisibilityIcon{
+    position: fixed;
+    z-index: 2;
+    right: 2vh;
+    bottom: 5vh;
+    height: 10%;
+    cursor: pointer;
+}
+
 .tutorialSidebar{
     position: fixed;
-    height: 100%;
+    height: 100vh;
     width: 20vw;
     top: 0;
     left: 0vw;
@@ -239,48 +343,82 @@ li{
 }
 
 .tutorialSidebarNav{
-    padding-left: 2vw;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
+.tutorialSidebarNav .accordion{
+    position: relative;
+    right: 0px;
+    padding-left: 0vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    width: 100%;
+
+    transition: 0.1s ease-in;
+}
+.tutorialSidebarNav .accordion:hover{
+    padding-left: 1vw;
+    background-color: black;
+    transition: 0.1s ease-out;
+}
+
+.accordionSubHeading{
+    font-size: 20px !important;
+    padding-left:2vw;
+}
+
+.accordionSubHeading:hover{
+    background-color: #0f0f0f;
+    padding-left: 3vw;
+}
+
+
 .tutorialSidebarNav a{
     font-family: "Lilita one", sans-serif;
+    text-decoration: none;
     color: antiquewhite;
+    font-size: 24px;
     padding-top: 1vw;
     padding-bottom: 1vw;
     padding-right: 1vw;
 }
 
 .tutorialSidebarNav a:hover{
-    font-size: 200%;
     color: #ffbb00;
     transition: 0.5s ease-out;
     cursor: pointer;
 }
 
 .tutorialSidebarNav a:not(:hover){
-    font-size: 150%;
     color: antiquewhite;
     transition: 0.25s ease-out;
     cursor: pointer;
 }
 
-.tutorialDiv.center{
-    left: 0vw;
-    width: 90vw;
-
-    transition: 0.5s ease-out;
+.downloadImg{
+    image-rendering: pixelated;
+    height: 10vh !important; 
+    cursor: pointer !important; 
 }
 
 .tutorialDiv img{
     box-shadow: 0px 0px 20px black;
     height: 50vh;
+    object-fit: contain;
+    transform-origin: 50% 50%;
+    
     padding: 10px;
     cursor: zoom-in;
 
-    transition: 0.1s ease-out;
+    transition: 0.5s ease-out;
+}
+
+.tutorialDiv img.hidden{
+    box-shadow: 0px 0px 0px;
+    height: 0vh;
+    transition: 0.5s ease-in-out;
 }
 
 .tutorialDiv img.zoom{
@@ -289,3 +427,11 @@ li{
 
     cursor: zoom-out;
 }
+
+.imgContainer{
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
