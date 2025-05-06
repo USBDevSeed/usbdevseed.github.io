@@ -16,7 +16,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
     });
 
     var lastHeadingIdx = -1;
-    var lastHeadingAccordionContainer;
+    var lastHeading;
+    var lastAccordionHeadingContainer;
+    var lastAccordionContainer;
     var lastSubHeading;
     var subHeadingCount = 0;
     /* Automatic heading navigation on sidebar */
@@ -26,30 +28,43 @@ window.addEventListener('DOMContentLoaded', ()=>{
             subHeadingCount = 0;
             heading.id = 'heading' + String(lastHeadingIdx);
 
-            /* Creation of accordion */
-            const accordionInstance = document.createElement("div");
-            accordionInstance.classList.add('accordion');
-            navbar.appendChild(accordionInstance);
-
-            /*Accordion heading*/
-            const accordionHeadingInstance = document.createElement("a");
-            accordionHeadingInstance.classList.add('accordionHeading');
-            accordionHeadingInstance.textContent = heading.textContent;
-            accordionHeadingInstance.href = '#heading' + String(lastHeadingIdx);
-            accordionHeadingInstance.addEventListener("click", function(){onNavbarHeadingClicked(heading)});
-            accordionInstance.appendChild(accordionHeadingInstance);
-            accordionHeadingInstance.addEventListener("click", function(){onAccordionClicked(accordionInstance)});
-
-            /*Accordion Container*/
-            const accordionContainer = document.createElement("div");
-            accordionContainer.classList.add("accordionContainer");
-            lastHeadingAccordionContainer = accordionContainer;
-            accordionInstance.appendChild(accordionContainer);
-
+            // Creation of navigation heading
+            // Here i create a simple <a> heading for the navigation
+            // If the heading then contains an H2 heading, then it will put it inside an accordion
+            const headingInstance = document.createElement('a');
+            headingInstance.textContent = heading.textContent;
+            headingInstance.href = '#heading' + String(lastHeadingIdx);
+            headingInstance.addEventListener("click", function(){onNavbarHeadingClicked(heading)});
+            navbar.appendChild(headingInstance);
+            lastHeading = headingInstance;
+            
         }
         else if(heading.tagName == 'H2'){
             subHeadingCount++;
             heading.id = 'heading' + String(lastHeadingIdx) + "_" + String(subHeadingCount);
+
+            //This means its the first heading, so it will convert it into an accordion
+            if(subHeadingCount == 1){
+                /* Creation of accordion */
+                const accordionInstance = document.createElement("div");
+                accordionInstance.classList.add('accordion');
+                navbar.appendChild(accordionInstance);
+
+                /*Accordion heading container*/
+                const accordionHeadingContainer = document.createElement("div");
+                accordionHeadingContainer.classList.add("headingContainer");
+                accordionInstance.appendChild(accordionHeadingContainer);
+                lastAccordionHeadingContainer = accordionHeadingContainer;
+
+                /*Reparent last heading*/
+                accordionHeadingContainer.appendChild(lastHeading);
+
+                /*Creation of Accordion container*/
+                const accordionContainer = document.createElement("div");
+                accordionContainer.classList.add("accordionContainer");
+                accordionInstance.appendChild(accordionContainer);
+                lastAccordionContainer = accordionContainer;
+            }
 
             /*Accordion content */
             const subHeading = document.createElement("a");
@@ -57,89 +72,75 @@ window.addEventListener('DOMContentLoaded', ()=>{
             subHeading.href = '#heading' + String(lastHeadingIdx) + "_" + String(subHeadingCount);
             subHeading.classList.add('accordionSubHeading');
             subHeading.addEventListener("click", function(){onNavbarHeadingClicked(heading)});
-            lastHeadingAccordionContainer.appendChild(subHeading);
-
+            lastAccordionContainer.appendChild(subHeading);
             lastSubHeading = heading;
         }
     });
+    accordions = document.querySelectorAll('.accordion');
+    //accordionsHeadings = document.querySelectorAll('.accordionHeading');
 
     /* Accordion */
     accordions.forEach((accordion,idx) => {
-        var accordionHeading = accordion.querySelector('.accordionHeading');
-        if(accordionHeading != null){
-            accordionHeading.addEventListener("click", function(){onAccordionClicked(accordion)});
+        var accordionHeadingContainer = accordion.querySelector('.headingContainer');
+        if(accordionHeadingContainer != null){
+            /*Assigning the click event for the accordion*/
+            accordionHeadingContainer.addEventListener("click", function(){onAccordionClicked(accordion)});
+
+            /*Creating the arrow icon*/
+            var accordionArrow = document.createElement("img");
+            accordionArrow.classList.add('accordionArrow');
+            accordionArrow.src = "../../Assets/Icons/arrow.png"
+            accordionHeadingContainer.appendChild(accordionArrow);
         }
     });
 
+    /*Scroll fix*/
+    var navigationLinks = tutorialSidebar.querySelectorAll('a');
+    navigationLinks.forEach((link, idx) => {
+        link.addEventListener('click', function(i){
+            i.preventDefault();
+
+            //The substring function deletes the '#' from the href reference
+            const targetId = link.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            tutorialDiv.scrollTo({
+                top: target.offsetTop,
+                behavior: 'smooth'
+            });
+        })
+    })
 });
 
 function onNavbarBurgerIconClicked() {
     if(tutorialSidebar.classList.contains('closed')){
         tutorialSidebar.classList.remove('closed');
-        burgerIcon.classList.remove('closed');
-        tutorialDiv.classList.remove('center');
+        /*burgerIcon.classList.remove('closed');*/
     }
     else{
         tutorialSidebar.classList.add('closed');
-        burgerIcon.classList.add('closed');
-        tutorialDiv.classList.add('center');
+        /*burgerIcon.classList.add('closed');*/
     }
 }
 
 function onAccordionClicked(accordionClicked){
-    var accordionContainer = accordionClicked.querySelector('.accordionContainer');
-    if(accordionContainer.classList.contains('display')){
-        accordionContainer.classList.remove('display');
-        //accordionContainer.style.height = '0px';
-
-        /*//Check if nested accordion
-        if(nestedAccordionParent.className != "accordion"){
-            return;
-        }
-        var nestedAccordionParentContainer = nestedAccordionParent.querySelector('.accordionContainer');
-        //Erase the offset if its a nested accordion
-        var offset = 0;
-        var nestedAccordions = nestedAccordionParent.querySelectorAll('.accordionContainer');
-        nestedAccordions.forEach((accordion => {
-            offset += accordion.scrollHeight;
-        }));
-        nestedAccordionParent.style.height = (nestedAccordionParent.scrollHeight - offset) + 'px';*/
+    if(accordionClicked.classList.contains('open')){
+        accordionClicked.classList.remove('open');
     }
     else{
-        accordionContainer.classList.add('display');
-
-        //Calculate the offset generated by other nested accordions inside
-        //var offset = 0;
-        /*var nestedAccordions = accordionContainer.querySelectorAll('.accordionContainer');
-        if(nestedAccordions.length != 0){
-            nestedAccordions.forEach((accordion => {
-                offset += accordion.scrollHeight;
-            }));
-        }*/
-        //accordionContainer.style.height = (accordionContainer.scrollHeight - offset) + 'px';
-
-        /*//Check if nested accordion
-        if(nestedAccordionParent.className != "accordion"){
-            return;
-        }
-        var nestedAccordionParentContainer = nestedAccordionParent.querySelector('.accordionContainer');
-        //Expand the accordion parent if nested
-        //This is a REALLY ugly solution but i need it to expand dinamically
-        //var nestedAccordionParentScrollHeight = nestedAccordionParent.style.height;
-        var parentScrollHeight = parseFloat(getComputedStyle(nestedAccordionParentContainer).width);
-        nestedAccordionParentContainer.style.height = (parentScrollHeight + accordionContainer.scrollHeight) + 'px';*/
+        accordionClicked.classList.add('open');
     }
 }
 
 function onNavbarHeadingClicked(heading){
     //Display accordion
-    if(heading.parentElement.className == "accordion"){
-        heading.parentElement.querySelector(".accordionContainer").classList.add('display');
+    var headingParent = heading.parentElement.parentElement
+    if(headingParent.className == "accordion"){
+        headingParent.classList.add('open');
     }
 
     //Display parent accordion if its a subheading
-    if(heading.parentElement.parentElement.className == "accordionContainer"){
-        heading.parentElement.parentElement.classList.add('display');
+    if(headingParent.parentElement.parentElement.className == "accordion"){
+        headingParent.parentElement.parentElement.classList.add('open');
     }
 
 
