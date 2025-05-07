@@ -13,8 +13,8 @@
 <body style="display: flex; flex-direction: column;">
     <div class="topbar">
         <img class="burgerIcon" src="../../Assets/Icons/burger.png" onclick="onNavbarBurgerIconClicked()">  
-        <img src="../../Assets/Logos/devseedLogoComplete.png" onclick="onReturnClicked()" style="cursor: pointer;">
-        <img style="margin-left: auto;" class="imgVisibilityIcon" src="../../Assets/Icons/images_show.png" onclick="toggleImgVisibility()">
+        <img style="cursor: pointer;" class="imgIcon" src="../../Assets/Logos/devseedLogoComplete.png" onclick="onReturnClicked()" >
+        <img style="margin-left: auto; width: auto; height: 100%;" class="imgVisibilityIcon" src="../../Assets/Icons/images_show.png" onclick="toggleImgVisibility()">
     </div>
 
     <div class="tutorialBody">
@@ -51,8 +51,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="accordion open">
                 <div class="headingContainer">
+                    <img src="/Assets/GodotIcons/CharacterBody2D.svg" class="imgIcon">
                     <h1 class="accordionHeading"> Nuestro personaje </h1>
                 </div>
                 <div class="accordionContainer display">
@@ -63,23 +65,24 @@
                         <img class="screenshot" src="img03.png">
                     </div>
                     <p> 
-                        Nuestro personaje sera un nodo de tipo <code class="language-gdscript"> CharacterBody2D</code>, para añadirlo a la escena, tendremos que seleccionar cualquiera de los dos botones subrayados (+, "Other Node"), y luego buscaremos <code class="language-gdscript"> CharacterBody2D</code>
+                        Nuestro personaje sera un nodo de tipo <code>CharacterBody2D</code>, para añadirlo a la escena, tendremos que seleccionar cualquiera de los dos botones subrayados (+, "Other Node"), y luego buscaremos <code>CharacterBody2D</code>
                     </p>
                     <div class="imgContainer"> 
                         <img class="screenshot" src="img04.png"> 
                         <img class="screenshot" src="img05.png">
                     </div>
                     <p> 
-                        Una vez creado el nodo <code class="language-gdscript"> CharacterBody2D</code>, podemos empezar a añadir nodos hijo a la escena. Para empezar, necesitamos ver a nuestro personaje usando una textura, esta textura puede ser una imagen plana o una animación. Si deseamos añadir animaciones a nuestro personaje, la mejor practica es utilizar un <i>Spritesheet</i>
+                        Una vez creado el nodo <code>CharacterBody2D</code>, podemos empezar a añadir nodos hijo a la escena. Para empezar, necesitamos ver a nuestro personaje usando una textura, esta textura puede ser una imagen plana o una animación. Si deseamos añadir animaciones a nuestro personaje, la mejor practica es utilizar un <i>Spritesheet</i>
                     </p>
                     <div class="accordion">
                         <div class="headingContainer">
+                            <img class="imgIcon" src="/Assets/GodotIcons/Sprite2D.svg">
                             <h2 class="accordionHeading"> Textura estática </h2> 
                         </div>
 
                         <div class="accordionContainer"> 
                             <p> 
-                                Para mostrar a nuestro personaje con una imagen estática, creemos un <code class="language-gdscript">Sprite2D</code> como hijo del <code class="language-gdscript">CharacterBody2D</code>. Para que podamos ver nuestro Sprite, tendremos que asignar una textura a la propiedad de Texture, localizada en el apartado de propiedades de nodo en la parte superior derecha del editor. 
+                                Para mostrar a nuestro personaje con una imagen estática, creemos un <code>Sprite2D</code> como hijo del <code>CharacterBody2D</code>. Para que podamos ver nuestro Sprite, tendremos que asignar una textura a la propiedad de Texture, localizada en el apartado de propiedades de nodo en la parte superior derecha del editor. 
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="img06.png"> 
@@ -93,14 +96,17 @@
                                 <a href="static_sprite03.png" download> <img class="downloadImg" src="static_sprite03.png"> </a>
                                 <a href="static_sprite04.png" download> <img class="downloadImg" src="static_sprite04.png"> </a>
                             </div>
-                            <p> 
-                                Asegurate de guardar cualquier imagen que guardes dentro de la carpeta de tu juego!
-                            </p>
+                            <div class="note">
+                                <p>
+                                    Asegurate de guardar cualquier imagen que guardes dentro de la carpeta de tu juego!
+                                </p>
+                            </div>
                     </div>
                     </div>
         
                     <div class="accordion"> 
                         <div class="headingContainer">
+                            <img class="imgIcon" src="/Assets/GodotIcons/AnimatedSprite2D.svg">
                             <h2 class="accordionHeading"> Textura animada (Spritesheet) </h2>
                         </div>
 
@@ -117,7 +123,7 @@
                                 <a href="spritesheet04.png" download> <img class="downloadImg" src="spritesheet04.png"> </a>
                             </div>
                             <p> 
-                                Una vez tengamos nuestra textura, crearemos un nodo <code class="language-gdscript">AnimatedSprite2D</code> como hijo de nuestro <code class="language-gdscript">CharacterBody2D</code>. Notaremos que este nuevo nodo no tiene una propiedad de textura como <code class="language-gdscript">Sprite2D</code>, en cambio, tiene una propiedad llamada <i>Sprite Frames</i>, que se encuentra en la categoría de <i> Animation</i>, daremos click y crearemos un nuevo recurso de <i>SpriteFrames</i>
+                                Una vez tengamos nuestra textura, crearemos un nodo <code>AnimatedSprite2D</code> como hijo de nuestro <code>CharacterBody2D</code>. Notaremos que este nuevo nodo no tiene una propiedad de textura como <code>Sprite2D</code>, en cambio, tiene una propiedad llamada <i>Sprite Frames</i>, que se encuentra en la categoría de <i> Animation</i>, daremos click y crearemos un nuevo recurso de <i>SpriteFrames</i>
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="img08.png"> 
@@ -150,10 +156,15 @@
                                 Esta es la ventana de <i>Selección de frames de Spritesheet</i>, y es aquí donde seleccionaremos los frames que usaremos de nuestro Spritesheet. En el apartado derecho de esta ventana podremos ajustar la cantidad de cortes que se le harán a nuestra imagen. En nuestro caso, nuestro Spritesheet solo se compone de 2 cuadros horizontales, entonces ajustaremos la propiedad de <i>Horizontal</i> a 2 recortes, y <i>Vertical</i> a 1. (En caso de usar un Spritesheet online o propio, debes de ajustar la cantidad de recortes al numero de frames que tenga tu imagen, algunos Spritesheets también contienen separación entre los frames, ajustable por la propiedad <i>Separation</i>)
                             </p>
                             <p> 
-                                Una vez este recortada correctamente nuestra imagen, seleccionaremos los frames en el orden que queremos que se reproduzca nuestra animación <b>(Tip!: En caso de usar un Spritesheet de 2 frames como el que usamos en este tutorial, es recomendado seleccionar el 2do frame de animación primero, de esta manera el personaje empezara la animación en movimiento, y no parecerá arrastrándose al mover)</b>
+                                Una vez este recortada correctamente nuestra imagen, seleccionaremos los frames en el orden que queremos que se reproduzca nuestra animación
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="img12.png"> 
+                            </div>
+                            <div class="note">
+                                <p>
+                                    <b>Tip!</b> En caso de usar un Spritesheet de 2 frames como el que usamos en este tutorial, es recomendado seleccionar el 2do frame de animación primero, de esta manera el personaje empezara la animación en movimiento, y no parecerá arrastrándose al mover
+                                </p>
                             </div>
                             <p> 
                                 Para nuestra "animación" de Idle, crearemos otra animación (Botón #1), la llamaremos "Idle" y repetiremos el proceso de abrir nuestro Spritesheet (Botón #7), sin embargo esta vez solo seleccionaremos un cuadro. La "animación" de Idle se reproducirá cuando nuestro personaje no este realizando ninguna acción.
@@ -165,17 +176,26 @@
                             </div>
                     </div>
     
-                    <div class="accordion">
+                    <div class="accordion open">
                         <div class="headingContainer">
+                            <img class="imgIcon" src="/Assets/GodotIcons/CollisionShape2D.svg">
                             <h2 class="accordionHeading">Añadiendo colisión</h2>
                         </div>
                         
-                        <div class="accordionContainer display">
+                        <div class="accordionContainer">
                             <p> 
-                                Ahora que podemos ver a nuestro personaje en el editor, tenemos que darle una <b>forma</b>, con la que podrá interactuar y <b>colisionar</b> con el mundo y sus elementos. Para añadir esta forma, crearemos un nodo <code class="language-gdscript">CollisionShape2D</code> como hijo de nuestro <code class="language-gdscript">CharacterBody2D</code>, ten mucho cuidado con esto!, pues un <code class="language-gdscript">CollisionShape2D</code> que <b>NO</b> sea hijo de un cuerpo de físicas como nuestro <code class="language-gdscript">CharacterBody2D</code> <b>NO</b> funcionara! Verifica que la siguiente jerarquía sea similar a la tuya:
+                                Ahora que podemos ver a nuestro personaje en el editor, tenemos que darle una <b>forma</b>, con la que podrá interactuar y <b>colisionar</b> con el mundo y sus elementos. Para añadir esta forma, crearemos un nodo <code>CollisionShape2D</code> como hijo de nuestro <code>CharacterBody2D</code>.
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="img14.png">
+                            </div>
+                            <div class="note alert">
+                                <p> 
+                                    Advertencia! verifica que añadas tu nodo <code>CollisionShape2D</code> como hijo de tu nodo <code>CharacterBody2D</code>, pues un nodo de colisión NO funcionara si no es hijo de un cuerpo de físicas como <code>CharacterBody2D</code>. 
+                                    <br>
+                                    <br>
+                                    Verifica que la jerarquía de tu arbol sea similar a la presentada arriba.
+                                </p>
                             </div>
                             <p> 
                                 Podrás notar que nuestro nuevo nodo tiene una advertencia! No te preocupes, esto es debido a que nuestro nodo todavía no tiene una forma definida. Para crear una forma, buscaremos la propiedad <i>Shape</i> en el apartado de propiedades de nodo, localizada en la parte derecha del editor. 
@@ -184,9 +204,9 @@
                                 Al intentar crear un recurso de forma, veremos un listado con multiples opciones, quizá demasiadas, pero no te abrumes! pues en la mayoría de casos solo necesitaremos de tres opciones:  
                             </p>
                             <ul>
-                                <li> <code class="language-gdscript">CircleShape2D</code>: Un circulo</li>
-                                <li> <code class="language-gdscript">RectangleShape2D</code>: Un rectángulo</li>
-                                <li> <code class="language-gdscript">CapsuleShape2D</code>: Una capsula</li>
+                                <li> <code>CircleShape2D</code>: Un circulo</li>
+                                <li> <code>RectangleShape2D</code>: Un rectángulo</li>
+                                <li> <code>CapsuleShape2D</code>: Una capsula</li>
                             </ul>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="img15.png">
@@ -194,16 +214,92 @@
                             <p> 
                                 Siéntete libre de probar y experimentar con cualquiera de estas opciones.
                             </p>
-                            <p> 
-                                <div class="imgContainer"> 
-                                    <img class="screenshot" src="img16.png">
-                                    
-                                </div>
+                            <div class="imgContainer"> 
+                                <img class="screenshot" src="img16.png">
+                                <img class="screenshot" src="img17.png">
+                                <img class="screenshot" src="img18.png">
+                            </div>
+                            <p>
+                                Una vez tengamos esta forma, nuestro personaje estará listo para interactuar con el nivel que diseñemos
                             </p>
+                        </div>
+                    </div>
+
+                    <div class="accordion open">
+                        <div class="headingContainer">
+                            <img class="imgIcon" src="/Assets/GodotIcons/Camera2D.svg"> 
+                            <h2 class="accordionHeading">Cámara</h2> 
+                        </div>
+                        <div class="accordionContainer">
+                            <p> 
+                                Para finalizar con la preparación de nuestro personaje, necesitaremos una cámara que siga al jugador mientras se mueve por el nivel. Creemos un nodo <code>Camera2D</code> como hijo de nuestro <code>CharacterBody2D</code>. Para nuestra suerte, la cámara de Godot funcionara automáticamente, sin necesidad de código u otro ajuste.
+                            </p>
+                            <p> 
+                                Sin embargo, podemos activar el suavizado de posición encontrado en el panel de propiedades de nodo localizado en la parte derecha del editor, esto hará que nuestra cámara se vea mucha mas fluida al moverse
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="/Tutorials/PrimerPlataformero/img19.png"> 
+                            </div>
+                            <p> Y con esto, hemos terminado de crear nuestro personaje! Ahora solo necesitamos un nivel donde probarlo</p>
                         </div>
                     </div>
             </div>
                 </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="headingContainer">
+                    <img class="imgIcon" src="/Assets/GodotIcons/WorldEnvironment.svg"> 
+                    <h1>El nivel de juego</h1>
+                </div>
+                <div class="accordionContainer">
+                    <p>
+                        Para empezar a crear nuestro nivel, debemos de crear otra escena. Hay varias maneras de realizar esto, por ejemplo, podemos usar el atajo de teclado <i>Ctrl+n</i>, o bien podemos crearla desde la interfaz del editor con el botón + al lado de nuestra pestaña de personaje (esta interfaz es similar a la de un navegador Web!) o desde el menu de <i>Scene</i> localizado en la parte superior izquierda del editor
+                    </p>
+                    <div class="imgContainer">
+                        <img class="screenshot" src="/Tutorials/PrimerPlataformero/img20.png">
+                    </div>
+                    <p>
+                        Al crear nuestra nueva escena, veremos que esta vacía, necesitaremos añadir un nodo de tipo <code>Node2D</code>, es aquí donde añadiremos todo el contenido de nuestro nivel, y mas eventualmente, nuestro personaje.
+                    </p>
+                    <div class="imgContainer">
+                        <img class="screenshot" src="/Tutorials/PrimerPlataformero/img21.png">
+                    </div>
+
+                    <div class="accordion open">
+                        <div class="headingContainer">
+                            <img class="imgIcon" src="/Assets/GodotIcons/TileMapLayer.svg">
+                            <h2 class="accordionHeading">Tilemap</h2>
+                        </div>
+                        <div class="accordionContainer">
+                            <p> 
+                                Un tilemap, en español "Mapa de mosaicos", es un conjunto de cuadros que usaremos para representar nuestro nivel, bien sea con cuadros de suelo u otros cuadros de elementos como arboles, cajas, decoraciones, etc. Con este nodo, podremos "pintar" estos elementos sobre una cuadricula para construir nuestro nivel. Podrás reconocer el concepto de <i>Tilemap</i> o <i>Tileset</i> a traves de editores de nivel en videojuegos como <i>Super Mario maker</i> o <i>Geometry Dash</i>
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="/Tutorials/PrimerPlataformero/example01.png">
+                                <img class="screenshot" src="/Tutorials/PrimerPlataformero/example02.webp">
+                            </div>
+                            <p>
+                                Al final de ajustar nuestro Tilemap, tendremos un sistema muy similar al de estos ejemplos
+                            </p>
+                            <p> 
+                                Empezaremos creando un nodo de tipo <code>TileMapLayer</code> como hijo de nuestro nodo <code>Node2D</code>. 
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="/Tutorials/PrimerPlataformero/img22.png">
+                            </div>
+                            <div class="note alert">
+                                <p>
+                                    Advertencia! Es importante que crees un nodo <code>TileMapLayer</code> y no un nodo <code><img src="/Assets/GodotIcons/deprecated.png">TileMap</code>, pues este ultimo esta deprecado y no es recomendable usarlo en nuevas versiones.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-top: 128px;"> 
+
+                </div>
+
             </div>
             <!--<pre> 
                 <code class="language-gdscript">
@@ -222,7 +318,6 @@
                         move_and_slide()
                 </code>
             </pre>-->
-            <h1> El mundo de juego </h1>
         </div>
     </div>
 

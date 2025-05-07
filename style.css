@@ -29,7 +29,6 @@ p{
     font-style: normal;
     font-weight: 300;
     font-size: 1.5em;
-    text-indent: 5%;
     line-height: 1.6;
 }
 
@@ -38,6 +37,10 @@ li{
     color: antiquewhite ;
     font-size: 110%;
     line-height: 1.8;
+}
+
+code{
+
 }
 
 .intro{
@@ -237,7 +240,7 @@ li{
 }
 
 .accordion > .headingContainer:hover{
-    width: 100%;
+    padding-right: 100%;
 
     transition: 0.5s ease-out;
 }
@@ -278,6 +281,7 @@ li{
     padding-left: 20px;
     padding-right: 10%;
     word-break: break-word;
+    text-indent: 5%;
 }
 
 .tutorialDiv h1{
@@ -355,14 +359,14 @@ li{
     transition: 0.25s ease-out;
 }
 
-.burgerIcon.closed{
-    /*left: 2vw;*/
-    /*transition: 0.5s ease-out;*/
-}
-
 .imgVisibilityIcon{
     z-index: 2;
     cursor: pointer;
+}
+
+.imgIcon{
+    height: 100%;
+    width: auto;
 }
 
 .tutorialSidebar{
@@ -472,6 +476,7 @@ li{
     height: 20vw;
     width: auto;
     cursor: zoom-in;
+    margin: 5px;
 
     transition: 0.5s ease-out;
 }
@@ -500,3 +505,42 @@ li{
     justify-content: space-around;
 }
 
+.note{
+    display: flex;
+    margin-left: 64px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    width: 75%;
+    align-items: center;
+    border-left: 16px solid cyan;
+    background-image: linear-gradient(to right, rgba(0, 255, 255, 0.336), rgba(0, 255, 255, 0));;
+}
+
+.note > p{
+    width: 100%;
+    text-indent: 0%;
+}
+
+.note > img{
+    height: clamp(64px, 10vw, 128px);
+    width: auto;
+    scale: 0.7;
+}
+
+.note.alert{
+    border-left: 16px solid #f9a31b;
+    background-image: linear-gradient(to right, #f9a41b5b, #f9a41b00);
+}
+
+.note.alert > img{
+    scale: 0.7;
+    animation-name: blink;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0%  {opacity: 0; animation-timing-function: ease-out;}
+    50% {opacity: 1; animation-timing-function: ease-in;}
+    100%{opacity: 0;}
+}

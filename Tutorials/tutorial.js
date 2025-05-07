@@ -5,16 +5,40 @@ let navbar = document.querySelector('.tutorialSidebarNav');
 let headings = document.querySelectorAll('h1, h2');
 let accordions = document.querySelectorAll('.accordion');
 let accordionsHeadings = document.querySelectorAll('.accordionHeading');
+let codeSections = document.querySelectorAll('p code');
 
-let tutorialDiv = document.querySelector('.tutorialDiv')
+let notes = document.querySelectorAll('.note');
+let alerts = document.querySelectorAll('.note.alert');
+
+let mainBody = document.querySelector('body');
+let tutorialDiv = document.querySelector('.tutorialDiv');
 let images = document.querySelectorAll('img');
 
 window.addEventListener('DOMContentLoaded', ()=>{
+    /* Window resize fix */
+    window.addEventListener("resize", onWindowResize);
+    onWindowResize();
+
+    /* Notes creation */
+    notes.forEach((note, idx) => {
+        const info_icon = document.createElement('img');
+        info_icon.src = "/Assets/Icons/info.png";
+        note.insertBefore(info_icon, note.firstChild);
+    });
+    alerts.forEach((alertNote, idx) =>{
+        const info_icon = alertNote.querySelector('img');
+        if(info_icon != null){
+            info_icon.src = "/Assets/Icons/warning.png";
+        }
+    })
+
+
     /* Zoom on images */
     images.forEach((img) => {
         img.addEventListener("click", function(){onImgClicked(img)});
     });
 
+    /*Dynamic heading sidebar */
     var lastHeadingIdx = -1;
     var lastHeading;
     var lastAccordionHeadingContainer;
@@ -77,9 +101,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     });
     accordions = document.querySelectorAll('.accordion');
-    //accordionsHeadings = document.querySelectorAll('.accordionHeading');
 
-    /* Accordion */
+    /* Accordion maker*/
     accordions.forEach((accordion,idx) => {
         var accordionHeadingContainer = accordion.querySelector('.headingContainer');
         if(accordionHeadingContainer != null){
@@ -109,7 +132,53 @@ window.addEventListener('DOMContentLoaded', ()=>{
             });
         })
     })
+
+    /* Code fix*/ 
+    codeSections.forEach((code, idx)=>{
+        code.classList.add('language-gdscript');
+        genCodeIcons(code);
+    });
+
 });
+
+function genCodeIcons(code){
+    const imgInstance = document.createElement('img');
+    imgInstance.style = "scale:1.5; margin-right: 7px"
+    //imgInstance.classList.add('imgIcon');
+    const codeText = code.textContent;
+
+    switch(codeText){
+        case "Node2D":
+            imgInstance.src = "/Assets/GodotIcons/Node2D.svg"
+            break;
+        case "CharacterBody2D":
+            imgInstance.src = "/Assets/GodotIcons/CharacterBody2D.svg"
+            break;
+        case "Sprite2D":
+            imgInstance.src = "/Assets/GodotIcons/Sprite2D.svg"
+            break;
+        case "AnimatedSprite2D":
+            imgInstance.src = "/Assets/GodotIcons/AnimatedSprite2D.svg"
+            break;
+        case "CollisionShape2D":
+            imgInstance.src = "/Assets/GodotIcons/CollisionShape2D.svg"
+            break;
+        case "Camera2D":
+            imgInstance.src = "/Assets/GodotIcons/Camera2D.svg"
+            break;
+        case "TileMapLayer":
+            imgInstance.src = "/Assets/GodotIcons/TileMapLayer.svg"
+            break;
+    }
+    code.insertBefore(imgInstance, code.firstChild);
+    //code.appendChild(imgInstance);
+}
+
+function onWindowResize(){
+    if(window.innerWidth <= 700){
+        tutorialSidebar.classList.add('closed');
+    }
+}
 
 function onNavbarBurgerIconClicked() {
     if(tutorialSidebar.classList.contains('closed')){
