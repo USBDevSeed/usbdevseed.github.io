@@ -35,12 +35,22 @@ p{
 li{
     font-family: "Roboto", sans-serif;
     color: antiquewhite ;
-    font-size: 110%;
-    line-height: 1.8;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5em;
+    line-height: 1.6;
 }
 
 code{
+    display: inline-flex;
+    align-items: center;
+    padding-right: 8px;
+}
 
+code img{
+    width: auto;
+    height: 100%;
 }
 
 .intro{
@@ -126,8 +136,10 @@ code{
 }
 
 .card{
+    display: flex;
+    flex-direction: column;
     position: relative;
-    width: 20vw;
+    width: clamp(256px, 30vw, 512px);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
     opacity: 0;
     bottom: -20px;
@@ -144,15 +156,21 @@ code{
 
 .card:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
-    width: 25vw;
     transition: 0.3 ease-out;
 }
 
 .card img{
     width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 .cardContainer {
+    display: flex;
+    flex-direction: column;
+    text-overflow: ellipsis;
+    overflow-wrap:normal;
     padding: 10px;
     justify-content: center;
     align-items: center;
@@ -160,10 +178,15 @@ code{
 
 .cardContainer h1{
     text-align: center;
+    font-size: clamp(16px, 4vw , 64px);
+    width: 100%;
+    margin: 8px;
 }
 
 .cardContainer p{
     text-align: center;
+    font-size: clamp(8px, 2vw , 24px);
+    margin-top: 0px;
 }
 
 .accordion{
@@ -324,6 +347,7 @@ code{
 .topbar{
     position: relative;
     display: flex;
+    align-items: center;
     background-color: black;
     top: 0;
     left: 0;
@@ -365,7 +389,7 @@ code{
 }
 
 .imgIcon{
-    height: 100%;
+    height: clamp(48px, 5vw, 128px);
     width: auto;
 }
 

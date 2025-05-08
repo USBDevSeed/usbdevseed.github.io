@@ -169,6 +169,9 @@ function genCodeIcons(code){
         case "TileMapLayer":
             imgInstance.src = "/Assets/GodotIcons/TileMapLayer.svg"
             break;
+        default:
+            imgInstance.style.display = "none";
+            break;
     }
     code.insertBefore(imgInstance, code.firstChild);
     //code.appendChild(imgInstance);
