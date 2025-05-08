@@ -46,8 +46,8 @@
                         Para empezar, necesitamos crear nuestro proyecto en Godot. Los proyectos en Godot se representan mediante carpetas, estas carpetas deben de tener el mismo nombre de nuestro proyecto, todo asset de nuestro juego ira dentro de esta carpeta. Ponle un nombre a tu proyecto y crea el proyecto para empezar a editarlo.
                     </p>
                     <div class="imgContainer"> 
-                        <img class="screenshot" src="img01.png"> 
-                        <img class="screenshot" src="img02.png">
+                        <img class="screenshot" src="project01.png"> 
+                        <img class="screenshot" src="project02.png">
                     </div>
                 </div>
             </div>
@@ -62,14 +62,14 @@
                         Godot funciona a partir de un árbol de escenas y nodos. Una escena esta constituida por multiples nodos, y un nodo individual puede ser muchas cosas, como un bloque de texto, una textura o una pista de audio. Podemos ver las escenas como una construcción, y los nodos como los ladrillos de esta. Para añadir nodos a nuestra escena, tendremos que buscar en el apartado superior izquierdo del editor.
                     </p>
                     <div class="imgContainer">
-                        <img class="screenshot" src="img03.png">
+                        <img class="screenshot" src="character01.png">
                     </div>
                     <p> 
                         Nuestro personaje sera un nodo de tipo <code>CharacterBody2D</code>, para añadirlo a la escena, tendremos que seleccionar cualquiera de los dos botones subrayados (+, "Other Node"), y luego buscaremos <code>CharacterBody2D</code>
                     </p>
                     <div class="imgContainer"> 
-                        <img class="screenshot" src="img04.png"> 
-                        <img class="screenshot" src="img05.png">
+                        <img class="screenshot" src="character02.png"> 
+                        <img class="screenshot" src="character03.png">
                     </div>
                     <p> 
                         Una vez creado el nodo <code>CharacterBody2D</code>, podemos empezar a añadir nodos hijo a la escena. Para empezar, necesitamos ver a nuestro personaje usando una textura, esta textura puede ser una imagen plana o una animación. Si deseamos añadir animaciones a nuestro personaje, la mejor practica es utilizar un <i>Spritesheet</i>
@@ -77,7 +77,7 @@
                     <div class="accordion">
                         <div class="headingContainer">
                             <img class="imgIcon" src="/Assets/GodotIcons/Sprite2D.svg">
-                            <h2 class="accordionHeading"> Textura estática </h2> 
+                            <h2 class="accordionHeading"> Textura (Sprite) </h2> 
                         </div>
 
                         <div class="accordionContainer"> 
@@ -85,8 +85,8 @@
                                 Para mostrar a nuestro personaje con una imagen estática, creemos un <code>Sprite2D</code> como hijo del <code>CharacterBody2D</code>. Para que podamos ver nuestro Sprite, tendremos que asignar una textura a la propiedad de Texture, localizada en el apartado de propiedades de nodo en la parte superior derecha del editor. 
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img06.png"> 
-                                <img class="screenshot" src="img07.png">
+                                <img class="screenshot" src="sprite01.png"> 
+                                <img class="screenshot" src="sprite02.png">
                             </div>
                             <p> Siéntete libre de usar cualquier imagen que desees, para propósitos de este tutorial, puedes usar el icono de Godot incluido por defecto en el proyecto, o también puedes descargar uno de estos aliens: 
                             </p>
@@ -129,14 +129,14 @@
                                 Una vez tengamos nuestra textura, crearemos un nodo <code>AnimatedSprite2D</code> como hijo de nuestro <code>CharacterBody2D</code>. Notaremos que este nuevo nodo no tiene una propiedad de textura como <code>Sprite2D</code>, en cambio, tiene una propiedad llamada <i>Sprite Frames</i>, que se encuentra en la categoría de <i> Animation</i>, daremos click y crearemos un nuevo recurso de <i>SpriteFrames</i>
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img08.png"> 
-                                <img class="screenshot" src="img09.png">
+                                <img class="screenshot" src="animatedsprite01.png"> 
+                                <img class="screenshot" src="animatedsprite02.png">
                             </div>
                             <p> 
                                 Al crear el recurso de <i>SpriteFrames</i>, podemos acceder a el y podremos ver una nueva ventana, localizada en la parte inferior del editor, este es el editor de animaciones, a continuación podrás ver los elementos mas importantes de este editor:
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img10.png">
+                                <img class="screenshot" src="animatedsprite03.png">
                             </div>
                             <ol>
                                 <li>Crear nueva animación</li>
@@ -153,7 +153,7 @@
                                 Por el momento, crearemos dos animaciones (con el botón #1), y las nombraremos: <i>Idle</i> y <i>Correr</i>. Al abrir nuestro Spritesheet (con el botón #7), veremos una nueva ventana:
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img11.png">
+                                <img class="screenshot" src="animatedsprite04.png">
                             </div>
                             <p> 
                                 Esta es la ventana de <i>Selección de frames de Spritesheet</i>, y es aquí donde seleccionaremos los frames que usaremos de nuestro Spritesheet. En el apartado derecho de esta ventana podremos ajustar la cantidad de cortes que se le harán a nuestra imagen. En nuestro caso, nuestro Spritesheet solo se compone de 2 cuadros horizontales, entonces ajustaremos la propiedad de <i>Horizontal</i> a 2 recortes, y <i>Vertical</i> a 1.
@@ -167,7 +167,7 @@
                                 Una vez este recortada correctamente nuestra imagen, seleccionaremos los frames en el orden que queremos que se reproduzca nuestra animación
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img12.png"> 
+                                <img class="screenshot" src="animatedsprite05.png"> 
                             </div>
                             <div class="note">
                                 <p>
@@ -180,7 +180,7 @@
                                 Listo! Asi se vera la interfaz del editor cuando tengamos nuestras animaciones preparadas para usar después.
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img13.png"> 
+                                <img class="screenshot" src="animatedsprite06.png"> 
                             </div>
                     </div>
     
@@ -195,7 +195,7 @@
                                 Ahora que podemos ver a nuestro personaje en el editor, tenemos que darle una <b>forma</b>, con la que podrá interactuar y <b>colisionar</b> con el mundo y sus elementos. Para añadir esta forma, crearemos un nodo <code>CollisionShape2D</code> como hijo de nuestro <code>CharacterBody2D</code>.
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img14.png">
+                                <img class="screenshot" src="collisionshape01.png">
                             </div>
                             <div class="note alert">
                                 <p> 
@@ -217,15 +217,15 @@
                                 <li> <code>CapsuleShape2D</code>: Una capsula</li>
                             </ul>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img15.png">
+                                <img class="screenshot" src="collisionshape02.png">
                             </div>
                             <p> 
                                 Siéntete libre de probar y experimentar con cualquiera de estas opciones.
                             </p>
                             <div class="imgContainer"> 
-                                <img class="screenshot" src="img16.png">
-                                <img class="screenshot" src="img17.png">
-                                <img class="screenshot" src="img18.png">
+                                <img class="screenshot" src="collisionshape03.png">
+                                <img class="screenshot" src="collisionshape04.png">
+                                <img class="screenshot" src="collisionshape05.png">
                             </div>
                             <p>
                                 Una vez tengamos esta forma, nuestro personaje estará listo para interactuar con el nivel que diseñemos
@@ -246,7 +246,7 @@
                                 Sin embargo, podemos activar el suavizado de posición encontrado en el panel de propiedades de nodo localizado en la parte derecha del editor, esto hará que nuestra cámara se vea mucha mas fluida al moverse
                             </p>
                             <div class="imgContainer">
-                                <img class="screenshot" src="/Tutorials/PrimerPlataformero/img19.png"> 
+                                <img class="screenshot" src="camera01.png"> 
                             </div>
                             <p> Y con esto, hemos terminado de crear nuestro personaje! Ahora solo necesitamos un nivel donde probarlo</p>
                         </div>
@@ -265,13 +265,13 @@
                         Para empezar a crear nuestro nivel, debemos de crear otra escena. Hay varias maneras de realizar esto, por ejemplo, podemos usar el atajo de teclado <i>Ctrl+n</i>, o bien podemos crearla desde la interfaz del editor con el botón + al lado de nuestra pestaña de personaje (esta interfaz es similar a la de un navegador Web!) o desde el menu de <i>Scene</i> localizado en la parte superior izquierda del editor
                     </p>
                     <div class="imgContainer">
-                        <img class="screenshot" src="/Tutorials/PrimerPlataformero/img20.png">
+                        <img class="screenshot" src="world01.png">
                     </div>
                     <p>
-                        Al crear nuestra nueva escena, veremos que esta vacía, necesitaremos añadir un nodo de tipo <code>Node2D</code>, es aquí donde añadiremos todo el contenido de nuestro nivel, y mas eventualmente, nuestro personaje.
+                        Al crear nuestra nueva escena, veremos que esta vacía, necesitaremos añadir un nodo de tipo <code>Node2D</code>. Es aquí donde añadiremos todo el contenido de nuestro nivel, y eventualmente, a nuestro personaje.
                     </p>
                     <div class="imgContainer">
-                        <img class="screenshot" src="/Tutorials/PrimerPlataformero/img21.png">
+                        <img class="screenshot" src="world02.png">
                     </div>
 
                     <div class="accordion open">
@@ -294,15 +294,65 @@
                                 Empezaremos creando un nodo de tipo <code>TileMapLayer</code> como hijo de nuestro nodo <code>Node2D</code>. 
                             </p>
                             <div class="imgContainer">
-                                <img class="screenshot" src="/Tutorials/PrimerPlataformero/img22.png">
+                                <img class="screenshot" src="tilemap01.png">
                             </div>
                             <div class="note alert">
                                 <p>
                                     Advertencia! Es importante que crees un nodo <code>TileMapLayer</code> y no un nodo <code><img src="/Assets/GodotIcons/deprecated.png">TileMap</code>, pues este ultimo esta deprecado y no es recomendable usarlo en nuevas versiones.
                                 </p>
                             </div>
-                            
+                            <p>
+                                Una vez creado nuestro nodo <code>TileMapLayer</code>, buscaremos por la propiedad <i>Tileset</i> en la sección de propiedades del nodo (recuerda, se encuentra en la parte derecha del editor) y crearemos un nuevo recurso de <i>Tileset</i>.
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="tilemap02.png">
+                            </div>
+                            <p> 
+                                Al crear un nuevo <i>Tileset</i>, se creara una nueva pestaña en la parte inferior del editor donde podremos empezar a editar nuestros tiles.
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="tilemap03.png">
+                            </div>
+                            <div class="note">
+                                <p>
+                                    Si no encuentras la pestaña de <i>Tileset</i>, asegúrate que tengas seleccionado el nodo de <code>TileMapLayer</code> y que hayas creado correctamente el recurso de <i>Tileset</i> en la sección de propiedades.
+                                </p>
+                            </div>
                         </div>
+
+                    </div>
+                    
+                    <div class="accordion open">
+                        <div class="headingContainer">
+                            <h1 class="accordionHeading">
+                                Construyendo nuestro Tileset
+                            </h1>
+                        </div>
+                        <div class="accordionContainer">
+                            <p>
+                                Para empezar a definir los tiles de nuestro nivel, necesitamos por supuesto una textura de Tileset, el cual se ve como una imagen bastante grande que contiene en forma de mosaico todos los cuadros de nuestro nivel.
+                                <br> <br>
+                                Para propósitos de este tutorial, he simplificado el asset tileSet de Kenney para que sea mas compacto y fácil de usar, sin embargo también puedes descargar el Tileset completo si deseas usarlo 
+                            </p>
+                            <div class="imgContainer">
+                                <a href="simpleTilemap.png" download><img class="downloadImg" src="simpleTilemap.png"></a>
+                                <a href="packedTilemap.png" download><img class="downloadImg" src="packedTilemap.png"></a>
+                            </div>
+                            <p>
+                                Antes de cargar nuestra textura en el <i>Tileset</i>, primero le especificaremos a nuestro nodo <code>TileMapLayer</code> el tamaño <i>exacto</i> en pixeles de cada elemento de nuestra textura. En nuestro caso, el tamaño de cada elemento es de <code>18x18</code>, el cual se lo especificaremos en la propiedad <i>Tile Size</i> dentro de las propiedades del <i>Tileset</i> en nuestro nodo <code>TileMapLayer</code>
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="tileset02.png">
+                            </div>
+                            <p>
+                                Ya especificado el tamaño de nuestros tiles, podemos añadir nuestra textura en la sección de <i>Tileset</i> añadiendo un nuevo <i>Atlas</i>. Al cargarla, nos aparecerá un aviso donde nos preguntara si queremos crear automáticamente los tiles a partir de la textura, y responderemos <b>Yes</b>.
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="tileset01.png">
+                                <img class="screenshot" src="tileset03.png">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div style="padding-top: 128px;"> 
