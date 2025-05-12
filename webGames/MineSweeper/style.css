@@ -9,6 +9,8 @@ body{
     color: wheat;
     font-family: "Bangers", system-ui;
     font-optical-sizing: auto;
+
+    height: 100%;
 }
 
 .background{

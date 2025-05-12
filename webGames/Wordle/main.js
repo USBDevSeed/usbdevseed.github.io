@@ -2,6 +2,7 @@ import { Palabras } from "../Wordle/palabras.js";
 
 let gameBoard = document.querySelector(".gameBoard");
 let virtualKeyboard = document.querySelector(".virtualKeyboard");
+let keyboardKeys 
 let letterRows
 
 const number_of_guesses = 6;
@@ -17,6 +18,11 @@ function ready(){
     remaining_guesses = number_of_guesses;
     correct_word = "patos";
     initBoard()
+
+    keyboardKeys = virtualKeyboard.querySelectorAll(".keyboardButton"); 
+    keyboardKeys.forEach((key_i, idx) => {
+        key_i.id = key_i.textContent;
+    })
 }
 
 function initBoard(){
@@ -75,7 +81,6 @@ virtualKeyboard.addEventListener("click", (event) =>{
     if(key === ""){
         key = "Backspace"
     }
-
     document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}));
 })
 
@@ -147,7 +152,9 @@ function submitGuess(){
         setTimeout(() => {
             current_box.classList.add("submitted");
             current_box.classList.add(box_class);
+            color_keyboard(current_letter, box_class);
         }, delay)
+
     }
 
     if(current_guess_string === correct_word){
@@ -163,4 +170,8 @@ function submitGuess(){
         }
         current_guess_idx++;
     }
+}
+
+function color_keyboard(key, box_class){
+    document.getElementById(key).classList.add(box_class);
 }
