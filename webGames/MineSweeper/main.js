@@ -14,9 +14,9 @@ var grid_numbers_array = []
 var grid_flagged_tiles = [];
 var opened_spaces = [];
 
-var max_columns = 5;
-var max_rows = 5;
-var max_mines = 3;
+var max_columns = 9;
+var max_rows = 9;
+var max_mines = 10;
 
 window.addEventListener("DOMContentLoaded", ready());
 
@@ -85,7 +85,7 @@ function gen_mines(amount){
         mine_tile.classList.add('mine');
 
         var mine_icon = document.createElement("img");
-        mine_icon.src = "/Assets/mine.png";
+        mine_icon.src = "Assets/mine.gif";
         mine_tile.appendChild(mine_icon);
 
         _.pull(grid_free_tiles_array, tile);

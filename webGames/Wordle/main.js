@@ -55,7 +55,7 @@ document.addEventListener("keyup", (event) => {
     }
 
     /* Reject letter input if it isnt a letter of if its multiple letters */
-    let eventLetter = pressedKey.match(/[a-z]/gi);
+    let eventLetter = pressedKey.match(/[a-za-ñ]/gi);
     if(!eventLetter || eventLetter.length > 1){
         return;
     }

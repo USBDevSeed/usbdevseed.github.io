@@ -71,7 +71,6 @@
 
 .tile_block img{
     position: relative;
-    left: 6px;
     top: -24px;
     transform: rotateX(15deg) rotateY(0deg);
     width: 100%;
@@ -88,7 +87,10 @@
 }
 
 .tile_block.flagged > .flag{
-    top: -24px;
+    top: -16px;
+    left: 5px;
+    width: 64px !important ;
+    height: 150%;
     opacity: 1;
     
     transition: 0.15s ease-out;
