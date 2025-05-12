@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: wheat;
+    font-family: "Bangers", system-ui;
+    font-optical-sizing: auto;
+}
+
+.background{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 300vw;
+    height: 300vh;
+
+    background: conic-gradient(
+        #B25CAD 90deg,
+        #7848A3 90deg 180deg,
+        #B25CAD 180deg 270deg,
+        #7848A3 270deg 
+    );
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    background-position: top left;
+
+    transform: rotateX(50deg) rotateZ(15deg) scale(1.5);
+    transform-origin: center center;
+    z-index: -1;
+
+    animation: background_animation 40s linear infinite;
+}
+
+@keyframes background_animation{
+    from{
+        background-position: 0 0;
+    }
+    to{
+        background-position: 300px 300px;
+    }
+}
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    /*align-self: center;
+    align-items: center;*/  
+}
+
+.topBar{
+    display: flex;
+    
+    width: 100%;
+    height: 128px;
+    margin-bottom: 16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.generateButton{
+    width: auto;
+    height: 75%;
+    opacity: 0.7;
+    cursor: pointer;
+
+    transition: 0.5s ease-in;
+}
+
+.generateButton:hover{
+    width: auto;
+    height: 100%;
+    opacity: 100;
+
+    transition: 0.3s ease-out;
+}
+
+/*.generateButton{
+    background-color: rgba(0, 0, 0, 0.582);
+    border-radius: 64px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    cursor: pointer;
+}*/
+
+.numberPicker{
+    display: flex;
+    flex-direction: row;
+}
+
+.numberPickerContainer{
+    display: flex;
+    margin: 8px;
+    flex-direction: row;
+}
+
+.numberPickerContainer > h1{
+    width: 256px;
+    text-align: right;
+    padding-right: 16px;
+
+    font-weight: 200;
+}
+
+.numberPickerContainer > input{
+    width: 128px;
+    font-size: 32px;
+    color: wheat;
+    background-color: rgb(0, 1, 8);
+    border-color: black;
+    font-family: 'Unbounded', Courier, monospace;
+}

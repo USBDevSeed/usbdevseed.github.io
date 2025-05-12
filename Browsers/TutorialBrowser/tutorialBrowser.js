@@ -1,7 +1,7 @@
 let cards = document.querySelectorAll('.card');
 
 function plataformeroCardClicked(){
-    window.location.href = '../Tutorials/PrimerPlataformero/index.html'
+    window.location.href = "/Tutorials/PrimerPlataformero/index.html"
 }
 
 //Intro animation
@@ -15,3 +15,6 @@ window.addEventListener('DOMContentLoaded', ()=> {
         })
     });
 })
+
+/* Event listeners */
+/* Tutorial cards */

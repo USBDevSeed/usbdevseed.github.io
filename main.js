@@ -55,15 +55,3 @@ function typeWriter() {
         setTimeout(typeWriter, 75);
     }
 }
-
-function onJuegosCategoryClicked() {
-    window.open("https://wholstenholm.itch.io/", '_blank').focus();
-}
-
-function onTutorialesCategoryClicked(){
-    window.location.href = 'TutorialBrowser/index.html'
-}
-
-function onArticulosCategoryClicked() {
-    window.open("https://usbcali.edu.co/exito-bonaventuriano-en-el-cali-game-jam-2025/", '_blank').focus();
-}

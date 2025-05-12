@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+body{
+    display: flex;
+    flex-direction: column;
+    color: wheat;
+    align-items: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1{
+    margin: 0;
+    text-align: center;
+}
+
+.webdleHeader{
+    margin: 16px;
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+    align-items: center;
+}
+
+.webdleHeader img {
+    transform-origin: top;
+    height: 150%;
+}
+
+.background{
+    background: conic-gradient(
+        #211C84 90deg,
+        #4D55CC 90deg 180deg,
+        #211C84 180deg 270deg,
+        #4D55CC 270deg 
+    );
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    background-position: top left;
+
+    transform: rotateX(50deg) rotateZ(-15deg) scale(1.5);
+    transform-origin: center center;
+    z-index: -1;
+
+    animation: background_animation 40s linear infinite;
+}
+
+@keyframes background_animation{
+    from{
+        background-position: 0 0;
+    }
+    to{
+        background-position: 300px 300px;
+    }
+}
+
+.gameBoard{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.letterRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.letterBox {
+    /*width: clamp(16px, 5vw, 128px);*/
+    width: 48px;
+    height: 48px;
+    aspect-ratio: 1 / 1;
+    border-radius: 2px;
+    margin: 2px;
+    border: 3px solid black;
+    background-color: rgba(0, 0, 0, 0.315);
+}
+
+.letterBox > p{
+    font-family: "Cal Sans", sans-serif !important;
+    scale: 0;
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    font-size: 3rem;
+    text-align: center;
+    line-height: 1 !important;
+
+    transition: 0.5s ease-out;
+}
+
+.letterBox.filledBox > p{
+    scale: 1;
+    transition: 0.05s ease-out;
+}
+
+.letterBox.submitted{
+    animation: flip 1s;
+}
+
+.letterBox.submitted > p{
+    animation: number_flip 1s;
+}
+
+.letterBox.null {
+    background-color: rgb(54, 54, 54);
+    transition: 0.25s ease-out;
+}
+
+.letterBox.halfCorrect {
+    background-color: rgb(255, 217, 0);
+    transition: 0.25s ease-out;
+}
+
+.letterBox.correct{
+    background-color: rgb(39, 196, 73);
+    transition: 0.5s ease-out;
+}
+
+@keyframes flip {
+    0%{
+        transform: rotateX(0deg);
+    }
+    100%{
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes number_flip {
+    0%{
+        transform: scale(1,1);
+    }
+    100%{
+        transform: scale(1,-1);
+    }
+}
+
+.virtualKeyboard{
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:rgb(24, 24, 24);
+    width: 100%;
+}
+
+.virtualKeyboard div{
+    display: flex;
+}
+
+/*.virtualKeyboard > .firstRow {
+    padding-left: 40px;
+}
+
+.virtualKeyboard > .secondRow {
+    padding-right: 32px;
+}*/
+
+.keyboardButton{ 
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(16px, 10vw, 32px);
+    min-width: 48px;
+    font-weight: 600;
+    width: auto;
+    height: auto;
+    color: black;
+    margin: 3px;
+    padding: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    .keyboardButton{
+        min-width: 16px;
+        font-size: clamp(16px, 5vw, 24px);
+    }
+}
+
+.keyboardButton > img{
+    width: clamp(16px, 5vw, 24px);
+}
