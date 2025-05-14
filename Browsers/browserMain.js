@@ -1,8 +1,8 @@
 let cards = document.querySelectorAll('.card');
 
-function plataformeroCardClicked(){
+/*function plataformeroCardClicked(){
     window.location.href = "/Tutorials/PrimerPlataformero/index.html"
-}
+}*/
 
 //Intro animation
 window.addEventListener('DOMContentLoaded', ()=> {

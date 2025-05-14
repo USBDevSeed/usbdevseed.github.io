@@ -16,7 +16,7 @@ addEventListener("DOMContentLoaded", ready())
 
 function ready(){
     remaining_guesses = number_of_guesses;
-    correct_word = "patos";
+    correct_word = "ganso";
     initBoard()
 
     keyboardKeys = virtualKeyboard.querySelectorAll(".keyboardButton"); 

@@ -4,19 +4,27 @@ let generate_button =      document.querySelector('.generateButton');
 let grid_column_picker =   document.querySelector("#columnInput");
 let grid_row_picker =      document.querySelector("#rowInput");
 let mines_amount_picker =  document.querySelector("#mineInput");
+let timer_label =          document.querySelector("#timerLabel")
+var mine_counter_label =   document.querySelector("#mineCounterLabel")
 
-var alphabet       = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"];
-var string_numbers = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight"];
-var grid_array = [];
-var grid_mines_array = [];
+var alphabet              = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"];
+var string_numbers        = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight"];
+var grid_array            = [];
+var grid_mines_array      = [];
 var grid_free_tiles_array = [];
-var grid_numbers_array = []
-var grid_flagged_tiles = [];
-var opened_spaces = [];
+var grid_numbers_array    = [];
+var grid_flagged_tiles    = [];
+var opened_spaces         = [];
+
+var first_click = false;
 
 var max_columns = 9;
 var max_rows = 9;
 var max_mines = 10;
+var current_mines;
+
+var timer_interval_id;
+var current_time = 0, minutes, seconds;
 
 window.addEventListener("DOMContentLoaded", ready());
 
@@ -38,6 +46,9 @@ function ready(){
 }
 
 function gen_grid(columns, rows){
+    first_click = false;
+    clear_timer();
+
     max_columns = columns;
     max_rows = rows;
     clear_grid();
@@ -73,7 +84,8 @@ function gen_grid(columns, rows){
     //var mines_amount = mines_amount_picker.value;
     gen_mines(max_mines);
 
-    gen_numbers();
+    //We generate the numbers after the first click
+    //gen_numbers();
 }
 
 function gen_mines(amount){
@@ -86,10 +98,12 @@ function gen_mines(amount){
 
         var mine_icon = document.createElement("img");
         mine_icon.src = "Assets/mine.gif";
+        mine_icon.classList.add("mine_icon");
         mine_tile.appendChild(mine_icon);
 
         _.pull(grid_free_tiles_array, tile);
     });
+    current_mines = max_mines;
 }
 
 function gen_numbers(){
@@ -156,15 +170,86 @@ function scan(tile_id){
     return nearby_tiles;
 }
 
-
 function on_grid_clicked(event){
     var target = event.target;
+
     if(target.classList.contains("tile_block")){
+        if(!first_click){
+            first_click = true;
+            start_timer(timer_label);
+            safe_first_click(target);
+            return;
+        }
         open_tile_block(target);
     }
     if(target.classList.contains("number")){
         chord_number(target);
     }
+}
+
+function safe_first_click(block){
+    var block_tile = block.parentElement;
+    var near_tiles = scan(block_tile.id);
+    var near_mines = [];
+
+    near_tiles.push(block_tile.id);
+    near_tiles.forEach((tile, idx) => {
+        if(_.includes(grid_mines_array, tile)){
+            near_mines.push(tile);
+        }
+    });
+    near_mines.forEach((tile, idx) => {
+        teleport_mine(tile, near_tiles);
+    });
+
+    gen_numbers();
+    open_tile_block(block);
+}
+
+function teleport_mine(tile_mine_id, safe_spaces = []){
+    var tile_instance = document.getElementById(tile_mine_id);
+    _.pull(grid_mines_array, tile_mine_id)
+    grid_free_tiles_array.push(tile_mine_id);
+    tile_instance.classList.remove("mine");
+
+    var mine_icon = tile_instance.querySelector(".mine_icon");
+    tile_instance.removeChild(mine_icon);
+
+    var grid_free_tiles_array_safe = _.difference(grid_free_tiles_array, safe_spaces);
+    var new_random_tile = _.sample(grid_free_tiles_array_safe);
+    var random_tile_instance = document.getElementById(new_random_tile);
+
+    random_tile_instance.classList.add('mine');
+    var new_mine_icon = document.createElement("img");
+    new_mine_icon.src = "Assets/mine.gif";
+    random_tile_instance.appendChild(new_mine_icon);
+    grid_mines_array.push(random_tile_instance.id);
+    _.pull(grid_free_tiles_array, random_tile_instance.id);
+}
+
+function start_timer(timerLabel){
+    current_time = 0, minutes, seconds;
+    timer_interval_id = setInterval(function(){
+        minutes = parseInt(current_time / 60, 10);
+        seconds = parseInt(current_time % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerLabel.textContent = minutes + ":" + seconds;
+
+        current_time++;
+    }, 1000);
+}
+
+function stop_timer(){
+    clearInterval(timer_interval_id);
+}
+
+function clear_timer(){
+    stop_timer();
+    current_time = 0, minutes, seconds;
+    timer_label.textContent = "0:00"
 }
 
 function chord_number(tile){
@@ -182,6 +267,7 @@ function chord_number(tile){
     if(flag_count >= tile_number){
         near_tiles.forEach((near_tile, idx)=>{
             var near_tile_instance = document.getElementById(near_tile);
+            if(near_tile_instance == null){ return; }
             var tile_block = near_tile_instance.querySelector(".tile_block");
             open_tile_block(tile_block);
         })
@@ -191,31 +277,40 @@ function chord_number(tile){
 function on_grid_right_clicked(event){
     event.preventDefault();
     var target = event.target;
-    var block_tile = target.parentElement;
-    if(target.classList.contains("tile_block")){
-        var flag = target.querySelector(".flag");
-        if(flag){
-            /*Remove flag*/
-            if(target.classList.contains("flagged")){
-                target.classList.remove("flagged");
-                _.pull(grid_flagged_tiles, block_tile.id);
-            }
-            /*Reshow flag*/
-            else{
-                target.classList.add("flagged");
-                grid_flagged_tiles.push(block_tile.id);
-            }
-        }
-        else{
-            /* If it doesnt have a flag, it means it has never been flagged */
-            target.classList.add("flagged");
-            const flag_instance = document.createElement("img");
-            flag_instance.src = "Assets/flagDrawn.png";
-            flag_instance.classList.add("flag");
-            target.appendChild(flag_instance);
 
+    if(target.classList.contains("tile_block")){
+        toggle_tile_block_flag(target);  
+    }
+    update_mine_counter();
+}
+
+function toggle_tile_block_flag(target, always_flag = false){
+    var block_tile = target.parentElement;
+    var flag = target.querySelector(".flag");
+    if(flag){
+        /* If the parameter to always flag is set, for example when winning, it will skip the removal of flag*/
+        if(always_flag){ return; }
+
+        /*Remove flag*/
+        if(target.classList.contains("flagged")){
+            target.classList.remove("flagged");
+            _.pull(grid_flagged_tiles, block_tile.id);
+        }
+        /*Reshow flag*/
+        else{
+            target.classList.add("flagged");
             grid_flagged_tiles.push(block_tile.id);
         }
+    }
+    else{
+        /* If it doesnt have a flag, it means it has never been flagged */
+        target.classList.add("flagged");
+        const flag_instance = document.createElement("img");
+        flag_instance.src = "Assets/flagDrawn.png";
+        flag_instance.classList.add("flag");
+        target.appendChild(flag_instance);
+
+        grid_flagged_tiles.push(block_tile.id);
     }
 }
 
@@ -239,6 +334,12 @@ function open_tile_block(block_instance){
         open_free_spaces(tile.id);
     }
     verify_win_state()
+}
+
+function update_mine_counter(){
+    var current_flags = grid_flagged_tiles.length;
+    var mine_counter = max_mines - current_flags;
+    mine_counter_label.textContent = mine_counter;
 }
 
 function open_free_spaces(tile){
@@ -272,20 +373,33 @@ function open_free_spaces(tile){
 function verify_win_state(){
     if(_.isEqual(_.sortBy(opened_spaces), _.sortBy(grid_free_tiles_array))){
         alert("Ganaste! Yupi!");
-        reveal_grid();
+        reveal_grid(true);
+        stop_timer();
     }
 }
 
 function game_over(){
     alert("Game over!");
     reveal_grid()
+    stop_timer();
 }
 
-function reveal_grid(){
-    grid_array.forEach((tile, idx) => {
+function reveal_grid(flag_bool = false){
+    grid_free_tiles_array.forEach((tile, idx) => {
         var tile_instance = document.getElementById(tile);
         var tile_block_instance = tile_instance.querySelector(".tile_block");
         if(tile_block_instance){
+            tile_block_instance.classList.add("clear");
+        }
+    })
+
+    grid_mines_array.forEach((tile, idx) => {
+        var tile_instance = document.getElementById(tile);
+        var tile_block_instance = tile_instance.querySelector(".tile_block");
+        if(flag_bool){
+            toggle_tile_block_flag(tile_block_instance, true);
+        }
+        else{
             tile_block_instance.classList.add("clear");
         }
     })
@@ -299,5 +413,6 @@ function clear_grid(){
     opened_spaces = [];
     grid_flagged_tiles = [];
     main_grid.innerHTML = null;
+
 }
 

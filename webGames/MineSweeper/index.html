@@ -18,11 +18,22 @@
 
     <div class="mainDiv">
         <div class="topBar">
+            <div class="mineCounterContainer">
+                <img class="imgIcon" src="Assets/mine.gif">
+                <p id="mineCounterLabel">10</p>
+            </div>
+            
             <img class="generateButton" src="Assets/smiley.png">
+
+            <div class="timerContainer"> 
+                <p id="timerLabel">00:00</p>
+                <img class="imgIcon" src="Assets/timer.gif">
+            </div>
+            
         </div>
 
         <div class="gridContainer"> 
-            <div class="mainGrid">
+            <div draggable="false" class="mainGrid">
                 <!-- Here goes the main minesweeper content -->
             </div>
         </div>

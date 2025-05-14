@@ -24,6 +24,10 @@
     border-width: 16px;
 }
 
+.mainGrid img{
+    pointer-events: none;
+}
+
 
 .tile{
     position: relative;
