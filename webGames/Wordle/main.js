@@ -77,8 +77,7 @@ virtualKeyboard.addEventListener("click", (event) =>{
         return;
     }
     let key = target.textContent;
-
-    if(key === ""){
+    if(target.classList.contains("backspace")){
         key = "Backspace"
     }
     document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}));

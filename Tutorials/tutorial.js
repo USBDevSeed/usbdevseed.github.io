@@ -32,7 +32,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     })
 
-
     /* Zoom on images */
     images.forEach((img) => {
         img.addEventListener("click", function(){onImgClicked(img)});

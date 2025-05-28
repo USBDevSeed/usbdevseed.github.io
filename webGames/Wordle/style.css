@@ -31,23 +31,6 @@ h1{
     height: 150%;
 }
 
-.background{
-    background: conic-gradient(
-        #211C84 90deg,
-        #4D55CC 90deg 180deg,
-        #211C84 180deg 270deg,
-        #4D55CC 270deg 
-    );
-    background-repeat: repeat;
-    background-size: 200vw 200vh;
-
-    transform: rotateX(50deg) rotateZ(-15deg) scale(1.5);
-    transform-origin: center center;
-    z-index: -1;
-
-    animation: background_animation 40s linear infinite;
-}
-
 @keyframes background_animation{
     from{
         background-position: 0 0;

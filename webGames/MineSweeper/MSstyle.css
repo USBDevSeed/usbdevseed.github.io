@@ -87,7 +87,6 @@
 
 /*When the block isnt flagged*/
 .tile_block > .flag{
-    z-index: 999;
     top: -64px;
     opacity: 0;
     transition: 0.3s ease-out;

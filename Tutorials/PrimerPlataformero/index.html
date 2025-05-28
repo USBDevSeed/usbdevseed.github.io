@@ -43,11 +43,89 @@
                 
                 <div class="accordionContainer"> 
                     <p> 
-                        Para empezar, necesitamos crear nuestro proyecto en Godot. Los proyectos en Godot se representan mediante carpetas, estas carpetas deben de tener el mismo nombre de nuestro proyecto, todo asset de nuestro juego ira dentro de esta carpeta. Ponle un nombre a tu proyecto y crea el proyecto para empezar a editarlo.
+                        Para empezar, necesitamos crear nuestro proyecto en Godot. Los proyectos en Godot se representan mediante carpetas, estas carpetas deben de tener el mismo nombre de nuestro proyecto, y todo asset de nuestro juego ira dentro de esta carpeta. Ponle un nombre a tu proyecto y presiona crear para empezar a editarlo.
+                        <br>
                     </p>
                     <div class="imgContainer"> 
                         <img class="screenshot" src="assets/project01.png"> 
                         <img class="screenshot" src="assets/project02.png">
+                    </div> 
+                    <p>
+                        ¡Sin embargo! Antes de empezar con la creación de nuestro juego, necesitaremos definir dos cosas muy importantes: la resolución y los controles.
+                    </p>
+
+
+                    <div class="accordion open">
+                        <div class="headingContainer">
+                            <h2 class="accordionHeading">Definiendo la resolución</h2>
+                        </div>
+                        <p>
+                            Todo videojuego funciona con una resolución "fija", esta resolución es determinada según el tipo de contenido del videojuego, si es un videojuego que usa elementos 3D con texturas de alta calidad, muy probablemente su resolución sera HD <code>(1280x720)</code> o 4K <code>(3840x2160)</code>. Sin embargo, en nuestro juego usaremos recursos en pixel art, es decir en un estilo pixeleado, y por ende necesitaremos usar una resolución ¡Mucho mas baja! Mas específicamente, trabajaremos con una resolución de <code>320x180</code>, la cual es una resolución popular entre videojuegos independientes en pixel-art, como Celeste, Shovel Knight, Nuclear throne, etc.
+                        </p>
+                        <div class="imgContainer"> 
+                            <img class="screenshot" src="assets/example03.jpeg"> 
+                            <img class="screenshot" src="assets/example04.webp"> 
+                            <img class="screenshot" src="assets/example05.webp"> 
+                        </div>
+                        <div class="note">
+                            <p>
+                                Si te preguntas el porque de esta resolución en especifico, si multiplicamos <code>320x180</code> por 4, tendremos una resolución HD de <code>1280x720</code>, ideal para escalar pixeles en pantallas modernas
+                            </p>
+                        </div>
+                        <p>
+                            Para definir esta resolución en nuestro proyecto, buscaremos en la barra superior del editor la sección de <i>Project</i>, desplegamos el menu, y dentro de este presionaremos el primer botón <i> Project settings</i>.
+                        </p>
+                        <div class="imgContainer"> 
+                            <img class="screenshot" src="assets/resolution01.png"> 
+                        </div>
+                        <p>
+                            Al presionar este botón, se abrirá la configuración del proyecto en una nueva ventana. Aquí buscaremos la opción de <i>Window/Ventana</i> dentro de la categoría <i>Display</i>, donde podremos modificar todo lo relacionado con la ventana de nuestro juego. Aquí podremos especificar el ancho y largo de nuestra ventana, que por defecto sera el tamaño de nuestra pantalla, aquí especificaremos la resolución de <code>320</code> de <i>ancho/width</i> por <code>180</code> de <i>alto/height</i>.
+                            <br>
+                            <br>
+                            Ademas, buscaremos en la sección de <i>Stretch/Estirar</i> la propiedad de <i>Mode/Modo</i>, y escogeremos la opción <i>Viewport</i>, esto escalara nuestro juego para que se pueda ver en pantallas modernas.
+                        </p>
+                        <div class="imgContainer"> 
+                            <img class="screenshot" src="assets/resolution02.png"> 
+                        </div>
+                        <div class="note">
+                            <p>
+                                ¡No cierres el menu todavía!
+                            </p> 
+                        </div>
+                    </div>
+
+                    <div class="accordion open">
+                        <div class="headingContainer">
+                            <h2>Inputs de jugador</h2>
+                        </div>
+                        <div class="accordionContainer">
+                            <p>
+                                En las configuraciones de proyecto, buscaremos la categoría de <i>Input map/Mapa de entrada</i>
+                            </p>
+                            <div class="imgContainer"> 
+                                <img class="screenshot" src="assets/inputmap01.png"> 
+                            </div>
+                            <p>
+                                Aquí en este menu vamos a definir todas las acciones que pueda realizar nuestro personaje, en nuestro caso solo queremos movimiento básico (caminar hacia la derecha e izquierda) y un salto, al estilo clásico de Super Mario.
+                                <br>
+                                <br>
+                                Para crear una acción, tendremos que introducir el nombre de esta en la caja de texto <i>Add New Action/Añadir una nueva acción</i>, y presionar la tecla Enter en tu teclado, o el botón de <i>Añadir/Add</i> localizado en el extremo derecho.
+                            </p>
+                            <div class="imgContainer"> 
+                                <img class="screenshot" src="assets/inputmap02.png"> 
+                            </div>
+                            <p>
+                                Crearemos tres acciones 
+                            </p>
+                            <ol>
+                                <li>Derecha</li>
+                                <li>Izquierda</li>
+                                <li>Salto</li>
+                            </ol>
+                            <div class="imgContainer"> 
+                                <img class="screenshot" src="assets/inputmap03.png"> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -248,7 +326,48 @@
                             <div class="imgContainer">
                                 <img class="screenshot" src="assets/camera01.png"> 
                             </div>
-                            <p> Y con esto, hemos terminado de crear nuestro personaje! Ahora solo necesitamos un nivel donde probarlo</p>
+                        </div>
+                    </div>
+                    <div class="accordion open">
+                        <div class="headingContainer">
+                            <img class="imgIcon" src="/Assets/GodotIcons/Script.svg"> 
+                            <h2 class="accordionHeading">Lógica de movimiento</h2> 
+                        </div>
+                        <div class="accordionContainer">
+                            <p>
+                                Ya tenemos la base de nuestro personaje construida! ahora, solo necesitamos aplicarle lógica a nuestro personaje para que lo podamos controlar. Por el momento, solo realizaremos la lógica de movimiento y de salto básico.
+                                <br> 
+                                <br>
+                                Para crear un nuevo archivo de código y asignarlo a nuestro personaje, presionaremos el botón de añadir Script localizado en la barra superior de nuestro editor de escena, donde se abrirá una nueva ventana de creación de Script, nosotros no necesitaremos un template u otra opción, asi que podemos presionar <i>Create</i> para crear y abrir nuestro código:
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="assets/character04.png">
+                                <img class="screenshot" src="assets/character05.png">
+                            </div>
+                            <p> 
+                                Una vez creado nuestro archivo de Script, se nos redireccionará automáticamente al editor de código de Godot, donde veremos esta unica linea de código:
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                    extends CharacterBody2D 
+                                </code>
+                            </pre>
+                            <p>
+                                Esta unica linea de código nos dice algo muy importante! al extender el nodo de <code>CharacterBody2D</code> , estamos construyendo nuestro propio nodo a partir del nodo ya creado, siguiendo esta lógica, todos los elementos que creemos en Godot para nuestro juego, serán pequeñas construcciones creadas a partir de los bloques que nos de el programa, y asi mismo, estas pequeñas construcciones serán los bloques de lo que sera nuestra construcción, es decir, nuestro juego.
+                                <br>
+                                <br>
+                                Ahora: existen dos funciones principales de GDScript (el lenguaje de programación propio de Godot):
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                    func _ready() -> void:
+                                        pass
+
+                                    func _physics_process(delta: float) -> void:
+                                        pass
+                                </code>
+                            </pre>
+
                         </div>
                     </div>
             </div>
@@ -277,7 +396,7 @@
                     <div class="accordion open">
                         <div class="headingContainer">
                             <img class="imgIcon" src="/Assets/GodotIcons/TileMapLayer.svg">
-                            <h2 class="accordionHeading">Tilemap</h2>
+                            <h2 class="accordionHeading">Ajustando nuestro Tilemap</h2>
                         </div>
                         <div class="accordionContainer">
                             <p> 
@@ -318,25 +437,14 @@
                                     Si no encuentras la pestaña de <i>Tileset</i>, asegúrate que tengas seleccionado el nodo de <code>TileMapLayer</code> y que hayas creado correctamente el recurso de <i>Tileset</i> en la sección de propiedades.
                                 </p>
                             </div>
-                        </div>
-
-                    </div>
-                    
-                    <div class="accordion open">
-                        <div class="headingContainer">
-                            <h1 class="accordionHeading">
-                                Construyendo nuestro Tileset
-                            </h1>
-                        </div>
-                        <div class="accordionContainer">
                             <p>
                                 Para empezar a definir los tiles de nuestro nivel, necesitamos por supuesto una textura de Tileset, el cual se ve como una imagen bastante grande que contiene en forma de mosaico todos los cuadros de nuestro nivel.
                                 <br> <br>
                                 Para propósitos de este tutorial, he simplificado el asset tileSet de Kenney para que sea mas compacto y fácil de usar, sin embargo también puedes descargar el Tileset completo si deseas usarlo 
                             </p>
                             <div class="imgContainer">
-                                <a href="simpleTilemap.png" download><img class="downloadImg" src="assets/simpleTilemap.png"></a>
-                                <a href="packedTilemap.png" download><img class="downloadImg" src="assets/packedTilemap.png"></a>
+                                <a href="assets/simpleTilemap.png" download><img class="downloadImg" src="assets/simpleTilemap.png"></a>
+                                <a href="assets/packedTilemap.png" download><img class="downloadImg" src="assets/packedTilemap.png"></a>
                             </div>
                             <p>
                                 Antes de cargar nuestra textura en el <i>Tileset</i>, primero le especificaremos a nuestro nodo <code>TileMapLayer</code> el tamaño <i>exacto</i> en pixeles de cada elemento de nuestra textura. En nuestro caso, el tamaño de cada elemento es de <code>18x18</code>, el cual se lo especificaremos en la propiedad <i>Tile Size</i> dentro de las propiedades del <i>Tileset</i> en nuestro nodo <code>TileMapLayer</code>
@@ -351,32 +459,63 @@
                                 <img class="screenshot" src="assets/tileset01.png">
                                 <img class="screenshot" src="assets/tileset03.png">
                             </div>
+                            <p>
+                                Si hemos especificado correctamente el tamaño de nuestros tiles, el editor ha recortado automáticamente cada uno de los tiles en nuestra imagen, lo que significa que ya tenemos nuestro Tilemap! Sin embargo, antes de empezar a construir nuestro nivel, tendremos que definir una forma para estos tiles, y asi nuestro personaje podrá interactuar con ellos.
+                            </p>
+                            <div class="note">
+                                <p>
+                                    Si al hacer este proceso automático, el tilemap aparece roto, (similar a la imagen inferior) la solución mas simple es eliminar la textura (con el icono de bote de basura)
+                                </p>
+                            </div>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="assets/error01.png">
+                                <img class="screenshot" src="assets/error02.png">
+                            </div>
+                            <p>
+                                Iremos nuevamente a la sección de propiedades del Tileset de nuestro nodo <code>TileMapLayer</code> y buscaremos por la propiedad <i>Physics Layer</i>, y crearemos una capa de físicas para nuestros tiles.
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="assets/tileset04.png">
+                            </div>
+                            <p>
+                                Una vez creada nuestra capa de físicas, tendremos que aplicarla a nuestros tiles. Para hacer esto, iremos al apartado de Tileset en la parte inferior del editor, y seleccionaremos el modo de <i>Paint</i> para "pintar" atributos sobre nuestros tiles.
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="assets/tileset05.png">
+                            </div>
+                            <p>
+                                El atributo que debemos de pintar sera nuestra capa de físicas, indicada en el editor como <i>Physics Layer 0</i>, cuando tengamos esta propiedad seleccionada, podremos darle click a cualquier tile en la parte derecha para pintar una colisión sobre este. Para generar una colisión vacía (es decir, borrar la forma) podemos presionar la tecla <b>C</b> para eliminar la forma, y si queremos colocar una colisión normal nuevamente, presionaremos la tecla <b>F</b>. Estos controles son atajos, para ver estas opciones podremos abrir el menu de propiedades indicado por los tres puntos blancos.
+                            </p>
+                            <div class="imgContainer">
+                                <img class="screenshot" src="assets/tileset06.png">
+                                <img class="screenshot" src="assets/tileset07.png">
+                            </div>
+                            <div class="note">
+                                <p>
+                                    Procura no asignar una colisión a los tiles inferiores del tilemap! Estos tiles son decorativos (como pasto, hojas, hongos, etc) y necesitaremos que el personaje NO colisione con estos.
+                                </p>
+                            </div>
+                            <p>
+                                Si hemos pintado las colisiones sobre nuestros tiles correctamente, nuestro nivel esta listo para construir! cualquier ajuste adicional que queramos añadir a nuestro tilemap, como un nuevo tile o ajustar la colisión o animación de un tile, lo haremos modificando este Tileset.
+                            </p>
                         </div>
-                        
                     </div>
+
+                    <div class="accordion open">
+                        <div class="headingContainer">
+                            <h2 class="accordionHeading">Construyendo nuestro nivel</h2>
+                        </div>
+                        <div class="accordionContainer">
+
+                        </div>
+                    </div>
+
                 </div>
                 <div style="padding-top: 128px;"> 
 
                 </div>
 
             </div>
-            <!--<pre> 
-                <code class="language-gdscript">
-                    extends CharacterBody2D
-    
-                    var rapidez = 100;
-    
-                    func _physics_process(delta: float) -> void:
-                        #Recibir input de jugador
-                        velocity.x = 0
-                        if Input.is_action_pressed("izquierda"):
-                            velocity.x += rapidez
-                        if Input.is_action_pressed("derecha"):
-                            velocity.x -= rapidez
-                        
-                        move_and_slide()
-                </code>
-            </pre>-->
         </div>
     </div>
 
