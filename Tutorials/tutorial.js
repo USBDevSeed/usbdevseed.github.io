@@ -235,7 +235,7 @@ function toggleImgVisibility(){
 function onImgClicked(clickedIMG){
     /* Remove the zoom from any image if applied */
     images.forEach((img) => {
-        if(img.classList.contains('zoom') && img != clickedIMG) {
+        if(img.classList.contains('zoom') && !img.classList.contains("downloadImg") && img != clickedIMG) {
             img.classList.remove('zoom');
         }
     });
