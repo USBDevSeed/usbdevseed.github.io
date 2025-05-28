@@ -125,6 +125,18 @@
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="assets/inputmap03.png"> 
                             </div>
+                            <p>
+                                Por cada acción, asignaremos una tecla, para asignarla presionaremos el botón de +, y pulsaremos una tecla de nuestro teclado, escoge la que tu prefieras para dicha acción.
+                                <br>
+                                <br>
+                                Tu mapa de entradas se debería de ver similar a este:
+                            </p>
+                            <div class="imgContainer"> 
+                                <img class="screenshot" src="assets/inputmap04.png"> 
+                            </div>
+                            <p>
+                                Ya podremos cerrar el menu de configuración y empezar a crear nuestro juego.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -137,17 +149,22 @@
                 </div>
                 <div class="accordionContainer display">
                     <p> 
-                        Godot funciona a partir de un árbol de escenas y nodos. Una escena esta constituida por multiples nodos, y un nodo individual puede ser muchas cosas, como un bloque de texto, una textura o una pista de audio. Podemos ver las escenas como una construcción, y los nodos como los ladrillos de esta. Para añadir nodos a nuestra escena, tendremos que buscar en el apartado superior izquierdo del editor.
+                        Godot funciona a partir de un árbol de escenas y nodos. Una escena esta constituida por multiples nodos, y un nodo individual puede ser muchas cosas, como un bloque de texto, una textura, una pista de audio, etc. Podemos ver las escenas como una construcción, y los nodos como los ladrillos de esta. Para añadir nodos a nuestra escena, tendremos que buscar en el apartado superior izquierdo del editor.
                     </p>
                     <div class="imgContainer">
                         <img class="screenshot" src="assets/character01.png">
                     </div>
                     <p> 
-                        Nuestro personaje sera un nodo de tipo <code>CharacterBody2D</code>, para añadirlo a la escena, tendremos que seleccionar cualquiera de los dos botones subrayados (+, "Other Node"), y luego buscaremos <code>CharacterBody2D</code>
+                        Nuestro personaje sera un nodo de tipo <code>CharacterBody2D</code>, para añadirlo a la escena, tendremos que seleccionar cualquiera de los dos botones subrayados (+, <i>Other Node/Otro nodo</i>), y luego buscaremos <code>CharacterBody2D</code>
                     </p>
                     <div class="imgContainer"> 
                         <img class="screenshot" src="assets/character02.png"> 
                         <img class="screenshot" src="assets/character03.png">
+                    </div>
+                    <div class="note">
+                        <p> 
+                            Asegurate de crear un nodo de <code>CharacterBody2D</code>
+                        </p>
                     </div>
                     <p> 
                         Una vez creado el nodo <code>CharacterBody2D</code>, podemos empezar a añadir nodos hijo a la escena. Para empezar, necesitamos ver a nuestro personaje usando una textura, esta textura puede ser una imagen plana o una animación. Si deseamos añadir animaciones a nuestro personaje, la mejor practica es utilizar un <i>Spritesheet</i>
@@ -169,10 +186,10 @@
                             <p> Siéntete libre de usar cualquier imagen que desees, para propósitos de este tutorial, puedes usar el icono de Godot incluido por defecto en el proyecto, o también puedes descargar uno de estos aliens: 
                             </p>
                             <div class="imgContainer"> 
-                                <a href="static_sprite01.png" download> <img class="downloadImg" src="assets/static_sprite01.png"> </a>
-                                <a href="static_sprite02.png" download> <img class="downloadImg" src="assets/static_sprite02.png"> </a>
-                                <a href="static_sprite03.png" download> <img class="downloadImg" src="assets/static_sprite03.png"> </a>
-                                <a href="static_sprite04.png" download> <img class="downloadImg" src="assets/static_sprite04.png"> </a>
+                                <a href="assets/static_sprite01.png" download> <img class="downloadImg" src="assets/static_sprite01.png"> </a>
+                                <a href="assets/static_sprite02.png" download> <img class="downloadImg" src="assets/static_sprite02.png"> </a>
+                                <a href="assets/static_sprite03.png" download> <img class="downloadImg" src="assets/static_sprite03.png"> </a>
+                                <a href="assets/static_sprite04.png" download> <img class="downloadImg" src="assets/static_sprite04.png"> </a>
                             </div>
                             <div class="note">
                                 <p>
@@ -198,10 +215,10 @@
                                 Puedes buscar un Spritesheet, realizar el tuyo, o descargar cualquiera de estos Spritesheet básicos:
                             </p>
                             <div class="imgContainer"> 
-                                <a href="spritesheet01.png" download> <img class="downloadImg" src="assets/spritesheet01.png" > </a>
-                                <a href="spritesheet02.png" download> <img class="downloadImg" src="assets/spritesheet02.png">  </a>
-                                <a href="spritesheet03.png" download> <img class="downloadImg" src="assets/spritesheet03.png"> </a>
-                                <a href="spritesheet04.png" download> <img class="downloadImg" src="assets/spritesheet04.png"> </a>
+                                <a href="assets/spritesheet01.png" download> <img class="downloadImg" src="assets/spritesheet01.png" > </a>
+                                <a href="assets/spritesheet02.png" download> <img class="downloadImg" src="assets/spritesheet02.png">  </a>
+                                <a href="assets/spritesheet03.png" download> <img class="downloadImg" src="assets/spritesheet03.png"> </a>
+                                <a href="assets/spritesheet04.png" download> <img class="downloadImg" src="assets/spritesheet04.png"> </a>
                             </div>
                             <p> 
                                 Una vez tengamos nuestra textura, crearemos un nodo <code>AnimatedSprite2D</code> como hijo de nuestro <code>CharacterBody2D</code>. Notaremos que este nuevo nodo no tiene una propiedad de textura como <code>Sprite2D</code>, en cambio, tiene una propiedad llamada <i>Sprite Frames</i>, que se encuentra en la categoría de <i> Animation</i>, daremos click y crearemos un nuevo recurso de <i>SpriteFrames</i>
