@@ -169,15 +169,20 @@
                     <p> 
                         Una vez creado el nodo <code>CharacterBody2D</code>, podemos empezar a añadir nodos hijo a la escena. Para empezar, necesitamos ver a nuestro personaje usando una textura, esta textura puede ser una imagen plana o una animación. Si deseamos añadir animaciones a nuestro personaje, la mejor practica es utilizar un <i>Spritesheet</i>
                     </p>
+                    <div class="note"> 
+                        <p>
+                            A continuación, tienes dos opciones a seguir: A. Una textura estática si no queremos animación o B: Una textura animada si queremos animar nuestro personaje
+                        </p>
+                    </div>
                     <div class="accordion">
                         <div class="headingContainer">
                             <img class="imgIcon" src="/Assets/GodotIcons/Sprite2D.svg">
-                            <h2 class="accordionHeading"> Textura (Sprite) </h2> 
+                            <h2 class="accordionHeading"> Opcion A: Textura (Sprite) </h2> 
                         </div>
 
                         <div class="accordionContainer"> 
                             <p> 
-                                Para mostrar a nuestro personaje con una imagen estática, creemos un <code>Sprite2D</code> como hijo del <code>CharacterBody2D</code>. Para que podamos ver nuestro Sprite, tendremos que asignar una textura a la propiedad de Texture, localizada en el apartado de propiedades de nodo en la parte superior derecha del editor. 
+                                Para mostrar a nuestro personaje con una imagen estática, crearemos un <code>Sprite2D</code> como hijo del <code>CharacterBody2D</code>. Para que podamos ver nuestro Sprite, tendremos que asignar una textura a la propiedad de <i>Texture/Textura</i>, localizada en el apartado de propiedades de nodo en la parte derecha del editor. 
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="assets/sprite01.png"> 
@@ -193,19 +198,19 @@
                             </div>
                             <div class="note">
                                 <p>
-                                    Dale click al personaje que mas te guste para guardarlo!
+                                    Dale click al personaje que mas te guste para descargarlo!
                                     <br> 
                                     <br>
-                                    Asegurate de guardar cualquier imagen que guardes dentro de la carpeta de tu juego!
+                                    Asegurate de guardar cualquier imagen que descargues dentro de la carpeta de tu juego!
                                 </p>
                             </div>
-                    </div>
+                        </div>
                     </div>
         
                     <div class="accordion"> 
                         <div class="headingContainer">
                             <img class="imgIcon" src="/Assets/GodotIcons/AnimatedSprite2D.svg">
-                            <h2 class="accordionHeading"> Textura animada (Spritesheet) </h2>
+                            <h2 class="accordionHeading"> Opcion B:Textura animada (Spritesheet) </h2>
                         </div>
 
                         <div class="accordionContainer">
@@ -225,10 +230,15 @@
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="assets/animatedsprite01.png"> 
-                                <img class="screenshot" src="assets/animatedsprite02.png">
                             </div>
                             <p> 
-                                Al crear el recurso de <i>SpriteFrames</i>, podemos acceder a el y podremos ver una nueva ventana, localizada en la parte inferior del editor, este es el editor de animaciones, a continuación podrás ver los elementos mas importantes de este editor:
+                                Al crear el recurso de <i>SpriteFrames</i>, podemos darle click para acceder a el.
+                            </p>
+                            <div class="imgContainer"> 
+                                <img class="screenshot" src="assets/animatedsprite02.png"> 
+                            </div>
+                            <p>
+                                 Y aqui podremos ver una nueva ventana, localizada en la parte inferior del editor, este es el editor de animaciones, a continuación podrás ver los elementos mas importantes de este editor:
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="assets/animatedsprite03.png">
@@ -244,6 +254,11 @@
                                 <li>Borrar frame de animación </li>
                                 <li>Listado de animaciones</li>
                             </ol>
+                            <div class="note">
+                                <p>
+                                    Puede suceder que la parte inferior del editor no se despliegue correctamente, para que aparezca, arrastra el borde superior de esta sección hacia arriba.
+                                </p>
+                            </div>
                             <p> 
                                 Por el momento, crearemos dos animaciones (con el botón #1), y las nombraremos: <i>Idle</i> y <i>Correr</i>. Al abrir nuestro Spritesheet (con el botón #7), veremos una nueva ventana:
                             </p>
@@ -266,13 +281,14 @@
                             </div>
                             <div class="note">
                                 <p>
-                                    <b>Tip!</b> En caso de usar un Spritesheet de 2 frames como el que usamos en este tutorial, es recomendado seleccionar el 2do frame de animación primero, de esta manera el personaje empezara la animación en movimiento, y no parecerá arrastrándose al mover
+                                    <b>¡Tip!</b> En caso de usar un Spritesheet de 2 frames como el que usamos en este tutorial, es recomendado seleccionar el 2do frame de animación primero, de esta manera el personaje empezara la animación en movimiento, y no parecerá arrastrándose al mover
                                 </p>
                             </div>
                             <p> 
                                 Para nuestra "animación" de Idle, crearemos otra animación (Botón #1), la llamaremos "Idle" y repetiremos el proceso de abrir nuestro Spritesheet (Botón #7), sin embargo esta vez solo seleccionaremos un cuadro. La "animación" de Idle se reproducirá cuando nuestro personaje no este realizando ninguna acción.
-        
-                                Listo! Asi se vera la interfaz del editor cuando tengamos nuestras animaciones preparadas para usar después.
+                                <br>
+                                <br>
+                                ¡Y listo! Asi se vera la interfaz del editor cuando tengamos nuestras animaciones preparadas para usar después.
                             </p>
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="assets/animatedsprite06.png"> 
@@ -292,19 +308,22 @@
                             <div class="imgContainer"> 
                                 <img class="screenshot" src="assets/collisionshape01.png">
                             </div>
+                            <div class="note">
+                                <p>Podrás notar que nuestro nuevo nodo tiene una advertencia! No te preocupes, esto es debido a que nuestro nodo todavía no tiene una forma definida.</p>
+                            </div>
                             <div class="note alert">
                                 <p> 
                                     Advertencia! verifica que añadas tu nodo <code>CollisionShape2D</code> como hijo de tu nodo <code>CharacterBody2D</code>, pues un nodo de colisión NO funcionara si no es hijo de un cuerpo de físicas como <code>CharacterBody2D</code>. 
                                     <br>
                                     <br>
-                                    Verifica que la jerarquía de tu arbol sea similar a la presentada arriba.
+                                    Verifica que la jerarquía de tu árbol sea similar a la presentada arriba.
                                 </p>
                             </div>
                             <p> 
-                                Podrás notar que nuestro nuevo nodo tiene una advertencia! No te preocupes, esto es debido a que nuestro nodo todavía no tiene una forma definida. Para crear una forma, buscaremos la propiedad <i>Shape</i> en el apartado de propiedades de nodo, localizada en la parte derecha del editor. 
+                                 Para crear una forma, buscaremos la propiedad <i>Shape</i> en el apartado de propiedades de nodo, localizada en la parte derecha del editor. 
                             </p>
                             <p>
-                                Al intentar crear un recurso de forma, veremos un listado con multiples opciones, quizá demasiadas, pero no te abrumes! pues en la mayoría de casos solo necesitaremos de tres opciones:  
+                                Al intentar crear un recurso de forma, veremos un listado con multiples opciones, quizá demasiadas, pero ¡No te abrumes! Pues en la mayoría de casos solo necesitaremos de tres opciones:  
                             </p>
                             <ul>
                                 <li> <code>CircleShape2D</code>: Un circulo</li>
@@ -352,7 +371,7 @@
                         </div>
                         <div class="accordionContainer">
                             <p>
-                                Ya tenemos la base de nuestro personaje construida! ahora, solo necesitamos aplicarle lógica a nuestro personaje para que lo podamos controlar. Por el momento, solo realizaremos la lógica de movimiento y de salto básico.
+                                Ya tenemos la base de nuestro personaje construida, ahora, solo necesitamos aplicarle lógica a nuestro personaje para que lo podamos controlar. Por el momento, solo realizaremos la lógica de movimiento y de salto básico.
                                 <br> 
                                 <br>
                                 Para crear un nuevo archivo de código y asignarlo a nuestro personaje, presionaremos el botón de añadir Script localizado en la barra superior de nuestro editor de escena, donde se abrirá una nueva ventana de creación de Script, nosotros no necesitaremos un template u otra opción, asi que podemos presionar <i>Create</i> para crear y abrir nuestro código:
@@ -370,21 +389,137 @@
                                 </code>
                             </pre>
                             <p>
-                                Esta unica linea de código nos dice algo muy importante! al extender el nodo de <code>CharacterBody2D</code> , estamos construyendo nuestro propio nodo a partir del nodo ya creado, siguiendo esta lógica, todos los elementos que creemos en Godot para nuestro juego, serán pequeñas construcciones creadas a partir de los bloques que nos de el programa, y asi mismo, estas pequeñas construcciones serán los bloques de lo que sera nuestra construcción, es decir, nuestro juego.
+                                Esta unica linea de código nos dice algo ¡muy importante! al extender el nodo de <code>CharacterBody2D</code> , estamos construyendo nuestro propio nodo a partir del nodo ya creado, siguiendo esta lógica, todos los elementos que creemos en Godot para nuestro juego, serán pequeñas construcciones creadas a partir de los bloques que nos de el programa, y asi mismo, estas pequeñas construcciones serán los bloques de lo que sera nuestra construcción, es decir, nuestro juego.
                                 <br>
                                 <br>
-                                Ahora: existen dos funciones principales de GDScript (el lenguaje de programación propio de Godot):
+                                A continuación, empezaremos nuestro código estableciendo todas las variables que usaremos en el jugador.
                             </p>
                             <pre>
                                 <code class="language-gdscript">
-                                    func _ready() -> void:
-                                        pass
-
-                                    func _physics_process(delta: float) -> void:
-                                        pass
+                                    #Bloque de variables
+                                    var gravedad = -9.8
+                                    var rapidez = 150
+                                    var salto = 250
                                 </code>
                             </pre>
+                            <p>
+                                Luego, usaremos una función nativa de Godot, _physics_process(delta), la cual se ejecuta cada frame, para nosotros, cada 0.0617 segundos, para aplicar la fuerza de gravedad sobre el personaje
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                    #La función de physics_process() se ejecuta cada frame
+                                    func _physics_process(delta: float) -> void:
+                                        #Esta función hará que nuestro personaje tenga físicas 
+                                        move_and_slide()
 
+                                        #Aplicaremos constantemente la fuerza de gravedad sobre el personaje
+                                        velocity.y += gravedad
+                                </code>
+                            </pre>
+                            <p>
+                                Ahora, crearemos un salto básico añadiendo este bloque de código dentro de la función de <code>physics_process</code>
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                    #Si el jugador unde la tecla de salto y el personaje esta en el suelo, añadiremos la fuerza de salto
+                                    if Input.is_action_just_pressed("salto") and is_on_floor():
+                                        velocity.y = -poder_salto
+                                </code>
+                            </pre>
+                            <div class="note">
+                                <p>
+                                    Muy seguramente creaste tus mapas de entradas (controles) con un nombre distinto a "salto", "derecha" o "izquierda", Asegurate de cambiar esto en las funciones de Input según corresponda.
+                                </p>
+                            </div>
+                            <p>
+                                Y luego, añadiremos una lógica de movimiento hacia la derecha e izquierda dentro de <code>physics_process</code>.
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                    #Bloque de código para movimiento horizontal
+                                    #Normalizaremos la velocidad horizontal a 0 si no hay ninguna tecla presionada
+                                    velocity.x = 0
+                                    #Cuando presionemos a la izquierda, sumaremos 
+                                    if Input.is_action_pressed("izquierda"):
+                                        velocity.x += rapidez
+                                    if Input.is_action_pressed("derecha"):
+                                        velocity.x -= rapidez
+                                </code>
+                            </pre>
+                            <p>
+                                Hemos terminado con el funcionamiento básico de nuestro personaje! Si has usado el nodo <code>AnimatedSprite2D</code> para crear las animaciones, este es el momento de usarlas! Añade este código a <code>physics_process</code>
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                #Si el personaje esta quieto, entonces reproducirá la animacion de caminar
+                                if velocity.x != 0:
+                                    $AnimatedSprite2D.play("caminar")
+                                #De lo contrario, cuando el personaje este quieto, reproducira la "animación" de idle
+                                else:
+                                    $AnimatedSprite2D.play("idle")
+                                </code>
+                            </pre>  
+                            <p>
+                                Adicionalmente a esto, podemos modificar el bloque de movimiento horizontal del personaje para que gire hacia la derecha e izquierda. 
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                    #Bloque de código para movimiento horizontal
+                                    #Normalizaremos la velocidad horizontal a 0 si no hay ninguna tecla presionada
+                                    velocity.x = 0
+                                    #Cuando presionemos a la izquierda, sumaremos 
+                                    if Input.is_action_pressed("izquierda"):
+                                        velocity.x += rapidez
+                                        $AnimatedSprite2D.flip_h = true
+                                    if Input.is_action_pressed("derecha"):
+                                        velocity.x -= rapidez
+                                        $AnimatedSprite2D.flip_h = true
+                                </code>
+                            </pre>
+                            <p>
+                                Y con esto, todo el codigo del personaje se vera asi:
+                            </p>
+                            <pre>
+                                <code class="language-gdscript">
+                                    extends CharacterBody2D
+
+                                    #Bloque de variables
+                                    var rapidez = 100;
+                                    var poder_salto = 250
+                                    var gravedad = -9.8
+
+                                    #La función de physics_process() se ejecuta cada frame
+                                    func _physics_process(delta: float) -> void:
+                                        #Esta función hará que nuestro personaje tenga físicas 
+                                        move_and_slide()
+
+                                        #Aplicaremos constantemente la fuerza de gravedad sobre el personaje
+                                        velocity.y += gravedad
+                                        
+                                        #Si el jugador unde la tecla de salto y el personaje esta en el suelo, añadiremos la fuerza de salto
+                                        if Input.is_action_just_pressed("salto") and is_on_floor():
+                                            velocity.y = -poder_salto
+                                        
+                                        #Bloque de código para movimiento horizontal
+                                        #Normalizaremos la velocidad horizontal a 0 si no hay ninguna tecla presionada
+                                        velocity.x = 0
+                                        #Cuando presionemos a la izquierda, sumaremos 
+                                        if Input.is_action_pressed("izquierda"):
+                                            velocity.x += rapidez
+                                            $AnimatedSprite2D.flip_h = true
+                                        if Input.is_action_pressed("derecha"):
+                                            velocity.x -= rapidez
+                                            $AnimatedSprite2D.flip_h = false
+
+                                        #Bloque de animación
+                                        #Si el personaje esta quieto, entonces reproducirá la animacion de caminar
+                                        if velocity.x != 0:
+                                            $AnimatedSprite2D.play("caminar")
+                                        #De lo contrario, cuando el personaje este quieto, reproducira la "animación" de idle
+                                        else:
+                                            $AnimatedSprite2D.play("idle")
+                                </code>
+                            </pre>
                         </div>
                     </div>
             </div>
@@ -521,6 +656,7 @@
                     <div class="accordion open">
                         <div class="headingContainer">
                             <h2 class="accordionHeading">Construyendo nuestro nivel</h2>
+                            Crea un nivel con el tilemap, instancia el jugador en el nivel, y ya esta! Tienes tu primer videojuego
                         </div>
                         <div class="accordionContainer">
 
